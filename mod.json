@@ -1,0 +1,107 @@
+{
+	"geode": "4.0.1",
+	"gd": {
+		"win": "2.2074",
+		"mac": "2.2074"
+	},
+	"id": "raydeeux.justenoughkeybinds",
+	"name": "JustEnoughKeybinds",
+	"version": "v1.0.0",
+	"developer": "RayDeeUx",
+	"description": "Just enough keybinds for you! (Hopefully.)",
+	"repository": "https://github.com/RayDeeUx/JustEnoughKeybinds",
+	"settings": {
+		"enabled": {
+			"name": "Enabled",
+			"type": "bool",
+			"default": true
+		},
+		"activate-keybinds-while-header": {
+			"name": "Activate Keybinds While Viewing...",
+			"type": "title"
+		},
+		"levelEditor": {
+			"name": "Level Editor",
+			"type": "bool",
+			"default": true
+		},
+		"pauseLayer": {
+			"name": "Pause Layer",
+			"type": "bool",
+			"default": true
+		},
+		"levelSearchLayer": {
+			"name": "Level Search Layer",
+			"type": "bool",
+			"default": true
+		},
+		"levelInfoLayer": {
+			"name": "Level Info Layer",
+			"type": "bool",
+			"default": true
+		},
+		"levelListLayer": {
+			"name": "Level List Layer",
+			"type": "bool",
+			"default": true
+		},
+		"levelBrowserLayer": {
+			"name": "Level Browser Layer",
+			"type": "bool",
+			"default": true
+		},
+		"leaderboardsLayer": {
+			"name": "Leaderboards Layer",
+			"type": "bool",
+			"default": true
+		},
+		"gjGarageLayer": {
+			"name": "Icon Kit",
+			"type": "bool",
+			"default": true
+		},
+		"infoLayer": {
+			"name": "Info Layer",
+			"type": "bool",
+			"default": true
+		},
+		"profilePage": {
+			"name": "Profiles",
+			"type": "bool",
+			"default": true
+		},
+		"moreOptionsLayer": {
+			"name": "Game Settings",
+			"type": "bool",
+			"default": true
+		},
+		"advanced-header": {
+			"name": "Advanced Options",
+			"description": "You should probably stay away from these settings unless if you know what you're doing.",
+			"type": "title"
+		},
+		"checkUnfocused": {
+			"name": "Check ProfilePage/InfoLayer Focus",
+			"description": "<cy>This option may reduce your FPS for a few seconds.</c>\n\nRun additional checks to see if the ProfilePage or InfoLayer you're on is active before performing a keybind's actions.",
+			"type": "bool",
+			"default": false
+		},
+		"Logging": {
+			"name": "Logging",
+			"type": "bool",
+			"default": false
+		}
+	},
+	"dependencies": {
+		"geode.node-ids": ">=1.20.0",
+		"geode.custom-keybinds": ">=1.10.0"
+	},
+	"issues": {
+		"url": "https://discord.com/channels/911701438269386882/1205523212444639292",
+		"info": "Ping me <cl>(@erymanthus)</c> in the Geode SDK Discord server's <cl>#help</c> channel if you need help. <cr>DMs are NOT accepted.</c>"
+	},
+	"links": {
+		"community": "https://discord.gg/WqZBYdBWZW",
+		"homepage": "https://discord.com/channels/822510988409831486/1206371881222144020"
+	}
+}
