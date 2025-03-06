@@ -576,9 +576,16 @@ $on_mod(Loaded) {
 	});
 	binds->registerBindable({
 		"garage-first-page"_spr,
-		"Previous Page",
+		"First Page",
 		"View the first page of your current category in the icon kit.",
 		{ Keybind::create(LEFT_ARROW, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Icon Kit", false
+	});
+	binds->registerBindable({
+		"garage-last-page"_spr,
+		"Last Page",
+		"View the last page of your current category in the icon kit.",
+		{ Keybind::create(RIGHT_ARROW, Modifier::Shift) },
 		"Global/JustEnoughKeybinds/Icon Kit", false
 	});
 	binds->registerBindable({

@@ -18,6 +18,7 @@ using namespace keybinds;
 #define BUTTON typeinfo_cast<CCMenuItemSpriteExtra*>
 #define PRESS(query) Utils::activateButtonSafe(query, this);
 #define FIRST_BUTTON_IN(query) Utils::pressFirstButtonInMenu(query, this);
+#define LAST_BUTTON_IN(query) Utils::pressLastButtonInMenu(query, this);
 #define FIND_TAB(tab) "category-menu > " tab "-button"
 #define SELECT_TAB(tab) if (const auto tabButton = this->querySelector(FIND_TAB(tab))) return GJGarageLayer::onSelectTab(tabButton);
 #define RETURN_IF_DISABLED if (!Utils::modEnabled() || !Utils::getBool("gjGarageLayer")) return;
@@ -99,8 +100,13 @@ class $modify(MyGJGarageLayer, GJGarageLayer) {
     	});
     	this->defineKeybind("garage-first-page"_spr, [this]() {
 			EARLY_RETURN
-    		FIRST_BUTTON_IN("navdot-menu")
+			FIRST_BUTTON_IN("navdot-menu")
     	});
+    	this->defineKeybind("garage-last-page"_spr, [this]() {
+			EARLY_RETURN
+			if (getChildByID("hiimjustin000.more_icons/navdot-menu")->isVisible()) LAST_BUTTON_IN("hiimjustin000.more_icons/navdot-menu")
+    		else LAST_BUTTON_IN("navdot-menu")
+		});
     	this->defineKeybind("garage-select-p1"_spr, [this]() {
 			EARLY_RETURN
 			if (!Utils::isModLoaded("weebify.separate_dual_icons")) return;

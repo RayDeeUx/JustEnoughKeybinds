@@ -62,4 +62,12 @@ namespace Utils {
 		if (const auto toggler = menu->getChildByType<CCMenuItemToggler>(0); toggler && toggler->isVisible()) return toggler->activate();
 		log::info("couldn't find toggler {} in {}", query, parentNode->getID());
 	}
+
+	void pressLastButtonInMenu(const std::string &query, CCNode *parentNode) {
+		CCMenu* menu = Utils::findMenu(query, parentNode);
+		if (!menu) return log::info("couldn't find {}", query);
+		if (const auto button = menu->getChildByType<CCMenuItemSpriteExtra>(-1); button && button->isVisible()) return button->activate();
+		if (const auto toggler = menu->getChildByType<CCMenuItemToggler>(-1); toggler && toggler->isVisible()) return toggler->activate();
+		log::info("couldn't find toggler {} in {}", query, parentNode->getID());
+	}
 }

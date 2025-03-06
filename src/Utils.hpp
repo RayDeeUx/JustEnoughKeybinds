@@ -25,4 +25,5 @@ namespace Utils {
 
 	CCMenu* findMenu(const std::string& query, CCNode* parentNode);
 	void pressFirstButtonInMenu(const std::string &query, CCNode *parentNode);
+	void pressLastButtonInMenu(const std::string &query, CCNode *parentNode);
 }
