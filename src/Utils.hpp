@@ -24,6 +24,6 @@ namespace Utils {
 	void activateButtonSafe(const std::string& query, CCNode* parentNode);
 
 	CCMenu* findMenu(const std::string& query, CCNode* parentNode);
-	void pressFirstButtonInMenu(const std::string &query, CCNode *parentNode);
-	void pressLastButtonInMenu(const std::string &query, CCNode *parentNode);
+	void pressFirstButtonInMenu(const std::string& query, CCNode *parentNode);
+	void pressLastButtonInMenu(const std::string& query, CCNode *parentNode);
 }
