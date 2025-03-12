@@ -1,7 +1,7 @@
 #pragma once
 
 #define BETTERINFO "cvolton.betterinfo"
-#define INSTALL_BETTERINFO_YOU_BLOCKHEAD return FLAlertLayer::create("Hey there!", "BetterInfo is not installed!", "Close")->show();
+#define INSTALL_BETTERINFO_YOU_BLOCKHEAD return FLAlertLayer::create("Hey there!", "BetterInfo is required for this keybind, but it is not installed!", "Close")->show();
 
 using namespace geode::prelude;
 
@@ -24,6 +24,6 @@ namespace Utils {
 	void activateButtonSafe(const std::string& query, CCNode* parentNode);
 
 	CCMenu* findMenu(const std::string& query, CCNode* parentNode);
-	void pressFirstButtonInMenu(const std::string& query, CCNode *parentNode);
-	void pressLastButtonInMenu(const std::string& query, CCNode *parentNode);
+	void pressFirstButtonInMenu(const std::string &query, CCNode *parentNode);
+	void pressLastButtonInMenu(const std::string &query, CCNode *parentNode);
 }
