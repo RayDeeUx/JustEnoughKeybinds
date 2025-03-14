@@ -1011,7 +1011,7 @@ $on_mod(Loaded) {
 				jasminesGeodeButton = pauseLayer->querySelector("right-button-menu > hiimjustin000.geode_in_pause_menu/geode-button");
 			else if (const auto editorPauseLayer = gjbgl->getChildByType<EditorPauseLayer>(0))
 				jasminesGeodeButton = editorPauseLayer->querySelector("guidelines-menu > hiimjustin000.geode_in_pause_menu/geode-button");
-			if (const auto jgb = typeinfo_cast<CCMenuItemSpriteExtra*>(jasminesGeodeButton)) jgb->activate(); // apparently it NEEDs to be typeinfo cast or else crash
+			if (const auto jgb = typeinfo_cast<CCMenuItemSpriteExtra*>(jasminesGeodeButton); jgb) jgb->activate(); // apparently it NEEDs to be typeinfo cast or else crash
 			return ListenerResult::Propagate;
 		}
 		return ListenerResult::Propagate;
