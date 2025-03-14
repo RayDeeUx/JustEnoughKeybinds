@@ -811,8 +811,8 @@ $on_mod(Loaded) {
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
 	});
 	binds->registerBindable({
-		"menulayer-redash-scores"_spr,
-		"Scores",
+		"menulayer-redash-leaderboards"_spr,
+		"Scores (Leaderboards)",
 		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
 		{ Keybind::create(KEY_O, ALT_CTRL | Modifier::Shift) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
@@ -847,7 +847,7 @@ $on_mod(Loaded) {
 	});
 	// check BOTH right-side-menu AND ninxout.redash/redash-menu > ninxout.redash/main-menu
 	binds->registerBindable({
-		"menulayer-redash-map-packs"_spr,
+		"menulayer-redash-mappacks"_spr,
 		"Map Packs",
 		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
 		{ Keybind::create(KEY_M, ALT_CTRL | Modifier::Shift) },

@@ -53,7 +53,7 @@ class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 
 #define PRESS(query) Utils::activateButtonSafe(query, this);
 #define RETURN_IF_DISABLED if (!Utils::modEnabled() || !Utils::getBool("menuLayer")) return;
-#define RETURN_IF_NOT_ACTIVE if (CCScene::get()->getChildByType<FLAlertLayer>(0) || !CCScene::get()->getChildByID("MenuLayer")) return;
+#define RETURN_IF_NOT_ACTIVE if (this->getChildByType<FLAlertLayer>(0) || CCScene::get()->getChildByType<FLAlertLayer>(0) || !CCScene::get()->getChildByID("MenuLayer")) return;
 #define EARLY_RETURN\
 	RETURN_IF_DISABLED\
 	RETURN_IF_NOT_ACTIVE
@@ -67,6 +67,12 @@ class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 	if (const auto viewButton = levelMenu->getChildByID("view-button")) {\
 		if (const auto view = typeinfo_cast<CCMenuItemSpriteExtra*>(viewButton); view && view->isVisible()) return view->activate();\
 	}
+
+#define REDASH_PRESS(buttonID)\
+	CCNode* theButton = this->querySelector("ninxout.redash/redash-menu > ninxout.redash/main-menu > " buttonID "-button");\
+	if (!theButton) theButton = this->querySelector("right-side-menu > " buttonID "-button");\
+	if (!theButton) return;\
+	if (const auto button = typeinfo_cast<CCMenuItemSpriteExtra*>(theButton); theButton && theButton->isVisible()) return button->activate();
 
 class $modify(MyMenuLayer, MenuLayer) {
 	static void onModify(auto& self) {
@@ -117,21 +123,54 @@ class $modify(MyMenuLayer, MenuLayer) {
 			EARLY_RETURN
 			PUSH_BUTTON_IN_TYPE("event")
 		});
-		/*
-		// check BOTH ninxout.redash/redash-menu > ninxout.redash/main-menu AND right-side-menu
-		"menulayer-redash-create"_spr,
-		"menulayer-redash-saved"_spr,
-		"menulayer-redash-paths"_spr,
-		"menulayer-redash-scores"_spr,
-		"menulayer-redash-gauntlets"_spr,
-		"menulayer-redash-featured"_spr,
-		"menulayer-redash-lists"_spr,
-		"menulayer-redash-search"_spr,
-		"menulayer-redash-map-packs"_spr,
-		"menulayer-redash-quests"_spr,
-		"menulayer-redash-the-map"_spr,
-		"menulayer-redash-versus"_spr,
-		*/
+		this->defineKeybind("menulayer-redash-create"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("create")
+		});
+		this->defineKeybind("menulayer-redash-saved"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("saved")
+		});
+		this->defineKeybind("menulayer-redash-paths"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("paths")
+		});
+		this->defineKeybind("menulayer-redash-leaderboards"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("leaderboards")
+		});
+		this->defineKeybind("menulayer-redash-gauntlets"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("gauntlets")
+		});
+		this->defineKeybind("menulayer-redash-featured"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("featured")
+		});
+		this->defineKeybind("menulayer-redash-lists"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("lists")
+		});
+		this->defineKeybind("menulayer-redash-search"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("search")
+		});
+		this->defineKeybind("menulayer-redash-mappacks"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("mappacks")
+		});
+		this->defineKeybind("menulayer-redash-quests"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("quests")
+		});
+		this->defineKeybind("menulayer-redash-the-map"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("the-map")
+		});
+		this->defineKeybind("menulayer-redash-versus"_spr, [this]() {
+			EARLY_RETURN
+			REDASH_PRESS("versus")
+		});
 		return true;
 	}
 };
