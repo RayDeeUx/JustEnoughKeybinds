@@ -5,6 +5,7 @@
 #include <Geode/modify/LevelInfoLayer.hpp>
 #include <Geode/modify/ProfilePage.hpp>
 #include <Geode/modify/InfoLayer.hpp>
+#include "Manager.hpp"
 #include "Utils.hpp"
 
 using namespace geode::prelude;
@@ -18,7 +19,7 @@ using namespace keybinds;
 		}, id);\
 	}
 
-#define BETTERINFO_RETURN if (!Utils::isModLoaded(BETTERINFO)) INSTALL_BETTERINFO_YOU_BLOCKHEAD
+#define BETTERINFO_RETURN if (!Manager::getSharedInstance()->isBetterInfo) INSTALL_BETTERINFO_YOU_BLOCKHEAD
 
 #define PRESS(query) Utils::activateButtonSafe(query, this);
 #define FIRST_BUTTON_IN(query) Utils::pressFirstButtonInMenu(query, this);
@@ -98,6 +99,7 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 		this->defineKeybind("sort-by-size"_spr, [this]() {
 			SEARCHING_LEVELS_RETURN
 			LEVEL_BROWSER_LAYER_RETURN
+			if (!Manager::getSharedInstance()->isLevelSize) return;
 			PRESS("hiimjustin000.level_size/size-sort-menu > hiimjustin000.level_size/size-sort-toggler")
 		});
 		return true;

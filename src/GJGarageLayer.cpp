@@ -111,12 +111,12 @@ class $modify(MyGJGarageLayer, GJGarageLayer) {
 		});
     	this->defineKeybind("garage-select-p1"_spr, [this]() {
 			EARLY_RETURN
-			if (!Utils::isModLoaded("weebify.separate_dual_icons")) return;
+			if (!Manager::getSharedInstance()->isSeparateDualIcons) return;
 			PRESS("player-buttons-menu > player1-button")
 		});
     	this->defineKeybind("garage-select-p2"_spr, [this]() {
 			EARLY_RETURN
-			if (!Utils::isModLoaded("weebify.separate_dual_icons")) return;
+			if (!Manager::getSharedInstance()->isSeparateDualIcons) return;
 			PRESS("player-buttons-menu > player2-button")
 		});
     	return true;
@@ -131,8 +131,8 @@ class $modify(MyGJGarageLayer, GJGarageLayer) {
 	RETURN_IF_SHARDS_PAGE\
 	RETURN_IF_UNFOCUSED
 
+#define FINE_OUTLINE Manager::getSharedInstance()->isFineOutline
 #define OUTLINE_ID "alphalaneous.fine_outline"
-#define FINE_OUTLINE Utils::isModLoaded(OUTLINE_ID)
 #define FIND_COLOR(color) "buttons-menu > " color "-button"
 #define FIND_OTHER_COLOR(color) OUTLINE_ID "/color-tabs-menu > " color "-button"
 #define PRESS_COLOR(color)\

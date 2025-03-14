@@ -12,6 +12,14 @@ protected:
 public:
 
 	bool calledAlready = false;
+
+	bool isRedash = false;
+	bool isGlobed = false;
+	bool isLevelSize = false;
+	bool isBetterInfo = false;
+	bool isFineOutline = false;
+	bool isGeodeInPauseMenu = false;
+	bool isSeparateDualIcons = false;
 	bool isMrmanamaOrGarageReimagined = false;
 
 	static Manager* getSharedInstance() {

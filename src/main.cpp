@@ -1,5 +1,6 @@
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <Geode/ui/GeodeUI.hpp>
+#include "Manager.hpp"
 #include "Utils.hpp"
 
 #define SCENE_HAS CCScene::get()->getChildByID
@@ -612,7 +613,7 @@ $on_mod(Loaded) {
 	binds->registerBindable({
 		"garage-outline"_spr,
 		"Outline Color Tab",
-		"Switch to the Outline Color Tab.\n\n<cy>Requires Fine Outline mod Alphalaneous.</c>",
+		"Switch to the Outline Color Tab.\n\n<cy>Requires Fine Outline by Alphalaneous.</c>",
 		{ Keybind::create(KEY_Four, Modifier::Shift) },
 		"Global/JustEnoughKeybinds/Icon Kit/Colors", false
 	});
@@ -777,7 +778,7 @@ $on_mod(Loaded) {
 	new EventListener([=](InvokeBindEvent* event) {
 		if (SCENE_HAS("ModsLayer") || SCENE_HAS("ModsLayerWrapper") || !event->isDown() || !Utils::modEnabled()) return ListenerResult::Propagate;
 		if (GJBaseGameLayer* gjbgl = GJBaseGameLayer::get(); !gjbgl) geode::openModsList();
-		else if (Utils::isModLoaded("hiimjustin000.geode_in_pause_menu")) {
+		else if (Manager::getSharedInstance()->isGeodeInPauseMenu) {
 			CCNode* jasminesGeodeButton = nullptr;
 			if (const auto pauseLayer = gjbgl->getParent()->getChildByType<PauseLayer>(0))
 				jasminesGeodeButton = pauseLayer->querySelector("right-button-menu > hiimjustin000.geode_in_pause_menu/geode-button");
