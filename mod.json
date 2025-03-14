@@ -91,7 +91,7 @@
 			"type": "bool",
 			"default": false
 		},
-		"Logging": {
+		"logging": {
 			"name": "Logging",
 			"type": "bool",
 			"default": false

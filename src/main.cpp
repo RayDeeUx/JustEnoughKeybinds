@@ -737,14 +737,14 @@ $on_mod(Loaded) {
 		"menulayer-online-menus"_spr,
 		"Online Levels",
 		"Enter the online levels menu from the main menu.",
-		{ Keybind::create(KEY_G, ALT_CTRL) },
+		{ Keybind::create(KEY_E, CTRL_CMD) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
 	});
 	binds->registerBindable({
 		"menulayer-my-profile"_spr,
 		"My Profile",
 		"Enter your own profile page from the main menu.",
-		{ Keybind::create(KEY_G, ALT_CTRL) },
+		{ Keybind::create(KEY_P, ALT_CTRL) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
 	});
 	/* ————————————————————————— GLOBAL KEYBINDS ————————————————————————— */ // DONE

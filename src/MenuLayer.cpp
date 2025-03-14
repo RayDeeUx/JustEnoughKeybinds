@@ -7,13 +7,15 @@ using namespace geode::prelude;
 using namespace keybinds;
 
 class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
+	static void onModify(auto& self) {
+		(void) self.setHookPriority("MenuLayer::init", Priority::Early);
+	}
 	bool init() {
-		Loader* geode = Loader::get();
-		const std::vector<Mod*> mods = geode->getAllMods();
+		if (!MenuLayer::init()) return false;
 		Manager* manager = Manager::getSharedInstance();
 		if (manager->calledAlready) return true;
 		manager->calledAlready = true;
-		for (const Mod* mod : mods) {
+		for (const Mod* mod : Loader::get()->getAllMods()) {
 			const std::string& modID = mod->getID();
 			if (!Utils::isModLoaded(modID)) continue;
 			if (!manager->isRedash && modID == "ninxout.redash") manager->isRedash = true;
@@ -28,7 +30,15 @@ class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 			const bool cringeGarageMod = utils::string::endsWith(modID, ".garage-reimagined") || utils::string::startsWith(modID, "mrmanama.garage");
 			if (!manager->isMrmanamaOrGarageReimagined && cringeGarageMod) manager->isMrmanamaOrGarageReimagined = true;
 		}
-		return MenuLayer::init();
+		log::info("manager->isRedash: {}", manager->isRedash);
+		log::info("manager->isGlobed: {}", manager->isGlobed);
+		log::info("manager->isBetterInfo: {}", manager->isBetterInfo);
+		log::info("manager->isLevelSize: {}", manager->isLevelSize);
+		log::info("manager->isFineOutline: {}", manager->isFineOutline);
+		log::info("manager->isSeparateDualIcons: {}", manager->isSeparateDualIcons);
+		log::info("manager->isGeodeInPauseMenu: {}", manager->isGeodeInPauseMenu);
+		log::info("manager->isMrmanamaOrGarageReimagined: {}", manager->isMrmanamaOrGarageReimagined);
+		return true;
 	}
 };
 
@@ -49,6 +59,9 @@ class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 	RETURN_IF_NOT_ACTIVE
 
 class $modify(MyMenuLayer, MenuLayer) {
+	static void onModify(auto& self) {
+		(void) self.setHookPriority("MenuLayer::init", Priority::First);
+	}
 	DEFINE_KEYBIND
 	bool init() {
 		if (!MenuLayer::init()) return false;
@@ -66,8 +79,9 @@ class $modify(MyMenuLayer, MenuLayer) {
 		});
 		this->defineKeybind("menulayer-my-profile"_spr, [this]() {
 			EARLY_RETURN
-			MenuLayer::onMyProfile(nullptr);
+			PRESS("profile-menu > profile-button")
 		});
+		log::info("is redash installed?");
 		if (!Manager::getSharedInstance()->isRedash) return true;
 		log::info("redash is installed! adding redash keybinds");
 		return true;
