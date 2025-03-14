@@ -2,6 +2,7 @@
 #include <Geode/modify/CharacterColorPage.hpp>
 #include <Geode/modify/GJGarageLayer.hpp>
 #include <Geode/modify/ShardsPage.hpp>
+#include "Manager.hpp"
 #include "Utils.hpp"
 
 using namespace geode::prelude;
@@ -38,6 +39,7 @@ class $modify(MyGJGarageLayer, GJGarageLayer) {
     DEFINE_KEYBIND
 	bool init() {
     	if (!GJGarageLayer::init()) return false;
+    	if (Manager::getSharedInstance()->isMrmanamaOrGarageReimagined) return true;
     	this->defineKeybind("garage-cube"_spr, [this]() {
 			EARLY_RETURN
 			SELECT_TAB("cube")

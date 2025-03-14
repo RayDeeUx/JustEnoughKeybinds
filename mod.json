@@ -20,6 +20,11 @@
 			"name": "Activate Keybinds While Viewing...",
 			"type": "title"
 		},
+		"menuLayer": {
+			"name": "Main Menu",
+			"type": "bool",
+			"default": true
+		},
 		"levelEditor": {
 			"name": "Level Editor",
 			"type": "bool",

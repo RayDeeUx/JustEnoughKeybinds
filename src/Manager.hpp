@@ -12,6 +12,7 @@ protected:
 public:
 
 	bool calledAlready = false;
+	bool isMrmanamaOrGarageReimagined = false;
 
 	static Manager* getSharedInstance() {
 		if (!instance) {

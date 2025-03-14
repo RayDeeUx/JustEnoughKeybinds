@@ -87,14 +87,14 @@ $on_mod(Loaded) {
 	binds->registerBindable({
 		"first-page"_spr,
 		"Go To First Page",
-		"Go to the first page.<cy>Requires the BetterInfo mod by Cvolton if viewing comments.</c>",
+		"Go to the first page.<cy>Requires BetterInfo by Cvolton if viewing comments.</c>",
 		{ Keybind::create(LEFT_ARROW, Modifier::Shift) },
 		"Global/JustEnoughKeybinds/Partially Universal Shortcuts", false
 	});
 	binds->registerBindable({
 		"last-page"_spr,
 		"Go To Last Page",
-		"Go to the last page.\n\n<cy>Requires the BetterInfo mod by Cvolton if browsing levels/level lists or viewing comments.</c>",
+		"Go to the last page.\n\n<cy>Requires BetterInfo by Cvolton if browsing levels/level lists or viewing comments.</c>",
 		{ Keybind::create(RIGHT_ARROW, Modifier::Shift) },
 		"Global/JustEnoughKeybinds/Partially Universal Shortcuts", false
 	});
@@ -123,7 +123,7 @@ $on_mod(Loaded) {
 	binds->registerBindable({
 		"sort-by-size"_spr,
 		"Sort Levels by Size",
-		"Sort your custom levels/saved levels by size. <cy>Requires the Level Size mod by hiimjasmine00.</c>",
+		"Sort your custom levels/saved levels by size. <cy>Requires Level Size by hiimjasmine00.</c>",
 		{ Keybind::create(KEY_S, CTRL_CMD | Modifier::Shift) },
 		"Global/JustEnoughKeybinds/Levels and Level Lists", false
 	});
@@ -535,14 +535,14 @@ $on_mod(Loaded) {
 	binds->registerBindable({
 		"garage-select-p1"_spr,
 		"Select Player 1",
-		"Select Player 1 in the icon kit.\n\n<cy>Requires the Separate Dual Icons mod by Weebify.</c>",
+		"Select Player 1 in the icon kit.\n\n<cy>Requires Separate Dual Icons by Weebify.</c>",
 		{ Keybind::create(KEY_One, CTRL_CMD) },
 		"Global/JustEnoughKeybinds/Icon Kit", false
 	});
 	binds->registerBindable({
 		"garage-select-p2"_spr,
 		"Select Player 2",
-		"Select Player 2 in the icon kit.\n\n<cy>Requires the Separate Dual Icons mod by Weebify.</c>",
+		"Select Player 2 in the icon kit.\n\n<cy>Requires Separate Dual Icons by Weebify.</c>",
 		{ Keybind::create(KEY_Two, CTRL_CMD) },
 		"Global/JustEnoughKeybinds/Icon Kit", false
 	});
@@ -612,7 +612,7 @@ $on_mod(Loaded) {
 	binds->registerBindable({
 		"garage-outline"_spr,
 		"Outline Color Tab",
-		"Switch to the Outline Color Tab.\n\n<cy>Requires the Fine Outline mod by Alphalaneous.</c>",
+		"Switch to the Outline Color Tab.\n\n<cy>Requires Fine Outline mod Alphalaneous.</c>",
 		{ Keybind::create(KEY_Four, Modifier::Shift) },
 		"Global/JustEnoughKeybinds/Icon Kit/Colors", false
 	});
@@ -716,6 +716,35 @@ $on_mod(Loaded) {
 		"Toggle compact mode when viewing comments.",
 		{ Keybind::create(KEY_Four) },
 		"Global/JustEnoughKeybinds/Comment Viewing Shortcuts", false
+	});
+	/* ————————————————————————— MENULAYER KEYBINDS —————————————————————— */
+	binds->registerBindable({
+		"menulayer-globed"_spr,
+		"Globed",
+		"Enter Globed from the main menu.\n\n<cy>Requires Globed by dankmeme01. No, this does not automatically join Globed servers/lobbies/rooms for you.</c>",
+		{ Keybind::create(KEY_G, CTRL_CMD) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
+	});
+	binds->registerBindable({
+		"menulayer-garage"_spr,
+		"Garage",
+		"Enter the garage from the main menu.",
+		{ Keybind::create(KEY_G, ALT_CTRL) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
+	});
+	binds->registerBindable({
+		"menulayer-online-menus"_spr,
+		"Online Levels",
+		"Enter the online levels menu from the main menu.",
+		{ Keybind::create(KEY_G, ALT_CTRL) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
+	});
+	binds->registerBindable({
+		"menulayer-my-profile"_spr,
+		"My Profile",
+		"Enter your own profile page from the main menu.",
+		{ Keybind::create(KEY_G, ALT_CTRL) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
 	});
 	/* ————————————————————————— GLOBAL KEYBINDS ————————————————————————— */ // DONE
 	binds->registerBindable({

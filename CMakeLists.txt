@@ -14,6 +14,7 @@ add_library(${PROJECT_NAME} SHARED
     src/Utils.hpp
     src/main.cpp
     src/EditorUI.cpp
+    src/MenuLayer.cpp
     src/PauseLayer.cpp
     src/GJGarageLayer.cpp
     src/MoreOptionsLayer.cpp
