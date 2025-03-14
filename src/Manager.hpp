@@ -20,6 +20,7 @@ public:
 	bool isFineOutline = false;
 	bool isGeodeInPauseMenu = false;
 	bool isSeparateDualIcons = false;
+	bool isGeodeTextureLoader = false;
 	bool isMrmanamaOrGarageReimagined = false;
 
 	static Manager* getSharedInstance() {

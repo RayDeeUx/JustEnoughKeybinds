@@ -747,6 +747,133 @@ $on_mod(Loaded) {
 		{ Keybind::create(KEY_P, ALT_CTRL) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
 	});
+	binds->registerBindable({
+		"menulayer-daily-chests"_spr,
+		"Daily Chests",
+		"Enter your own profile page from the main menu.",
+		{ Keybind::create(KEY_D, CTRL_CMD) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
+	});
+	binds->registerBindable({
+		"menulayer-texture-packs"_spr,
+		"Daily Chests",
+		"Enter your own profile page from the main menu.",
+		{ Keybind::create(KEY_D, CTRL_CMD) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
+	});
+	/* —————————————————————————— REDASH KEYBINDS ———————————————————————— */
+	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > daily-node > main-node > level-menu > skip-button
+	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > daily-node > main-node > level-menu > view-button
+	binds->registerBindable({
+		"menulayer-redash-daily"_spr,
+		"Daily Level",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_D, CTRL_CMD | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > weekly-node > main-node > level-menu > skip-button
+	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > weekly-node > main-node > level-menu > view-button
+	binds->registerBindable({
+		"menulayer-redash-weekly"_spr,
+		"Weekly Level",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_W, CTRL_CMD | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > event-node > main-node > level-menu > skip-button
+	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > event-node > main-node > level-menu > view-button
+	binds->registerBindable({
+		"menulayer-redash-event"_spr,
+		"Event Level",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_E, CTRL_CMD | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-create"_spr,
+		"Create",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_C, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-saved"_spr,
+		"Saved",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_S, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-paths"_spr,
+		"Paths",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_P, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-scores"_spr,
+		"Scores",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_O, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-gauntlets"_spr,
+		"Gauntlets",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_G, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-featured"_spr,
+		"Featured",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_F, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-lists"_spr,
+		"Lists",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_L, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-search"_spr,
+		"Search",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_S, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	// check BOTH right-side-menu AND ninxout.redash/redash-menu > ninxout.redash/main-menu
+	binds->registerBindable({
+		"menulayer-redash-map-packs"_spr,
+		"Map Packs",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_M, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-quests"_spr,
+		"Quests",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_Q, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-the-map"_spr,
+		"The Map",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_T, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
+	binds->registerBindable({
+		"menulayer-redash-versus"_spr,
+		"Versus",
+		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+		{ Keybind::create(KEY_V, ALT_CTRL | Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
+	});
 	/* ————————————————————————— GLOBAL KEYBINDS ————————————————————————— */ // DONE
 	binds->registerBindable({
 		"open-settings"_spr,
