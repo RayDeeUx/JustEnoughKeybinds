@@ -52,12 +52,21 @@ class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 	}
 
 #define PRESS(query) Utils::activateButtonSafe(query, this);
-#define FIRST_BUTTON_IN(query) Utils::pressFirstButtonInMenu(query, this);
 #define RETURN_IF_DISABLED if (!Utils::modEnabled() || !Utils::getBool("menuLayer")) return;
 #define RETURN_IF_NOT_ACTIVE if (CCScene::get()->getChildByType<FLAlertLayer>(0) || !CCScene::get()->getChildByID("MenuLayer")) return;
 #define EARLY_RETURN\
 	RETURN_IF_DISABLED\
 	RETURN_IF_NOT_ACTIVE
+
+#define PUSH_BUTTON_IN_TYPE(type)\
+	CCNode* levelMenu = this->querySelector("ninxout.redash/redash-menu > ninxout.redash/dailies-menu > " type "-node > main-node > level-menu");\
+	if (!levelMenu) return;\
+	if (const auto skipButton = levelMenu->getChildByID("skip-button")) {\
+		if (const auto skip = typeinfo_cast<CCMenuItemSpriteExtra*>(skipButton); skip && skip->isVisible()) return skip->activate();\
+	}\
+	if (const auto viewButton = levelMenu->getChildByID("view-button")) {\
+		if (const auto view = typeinfo_cast<CCMenuItemSpriteExtra*>(viewButton); view && view->isVisible()) return view->activate();\
+	}
 
 class $modify(MyMenuLayer, MenuLayer) {
 	static void onModify(auto& self) {
@@ -96,6 +105,33 @@ class $modify(MyMenuLayer, MenuLayer) {
 		log::info("is redash installed?");
 		if (!manager->isRedash) return true;
 		log::info("redash is installed! adding redash keybinds");
+		this->defineKeybind("menulayer-redash-daily"_spr, [this]() {
+			EARLY_RETURN
+			PUSH_BUTTON_IN_TYPE("daily")
+		});
+		this->defineKeybind("menulayer-redash-weekly"_spr, [this]() {
+			EARLY_RETURN
+			PUSH_BUTTON_IN_TYPE("weekly")
+		});
+		this->defineKeybind("menulayer-redash-event"_spr, [this]() {
+			EARLY_RETURN
+			PUSH_BUTTON_IN_TYPE("event")
+		});
+		/*
+		// check BOTH ninxout.redash/redash-menu > ninxout.redash/main-menu AND right-side-menu
+		"menulayer-redash-create"_spr,
+		"menulayer-redash-saved"_spr,
+		"menulayer-redash-paths"_spr,
+		"menulayer-redash-scores"_spr,
+		"menulayer-redash-gauntlets"_spr,
+		"menulayer-redash-featured"_spr,
+		"menulayer-redash-lists"_spr,
+		"menulayer-redash-search"_spr,
+		"menulayer-redash-map-packs"_spr,
+		"menulayer-redash-quests"_spr,
+		"menulayer-redash-the-map"_spr,
+		"menulayer-redash-versus"_spr,
+		*/
 		return true;
 	}
 };
