@@ -53,7 +53,7 @@ class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 
 #define PRESS(query) Utils::activateButtonSafe(query, this);
 #define RETURN_IF_DISABLED if (!Utils::modEnabled() || !Utils::getBool("menuLayer")) return;
-#define RETURN_IF_NOT_ACTIVE if (this->getChildByType<FLAlertLayer>(0) || CCScene::get()->getChildByType<FLAlertLayer>(0) || !CCScene::get()->getChildByID("MenuLayer")) return;
+#define RETURN_IF_NOT_ACTIVE if (this->getChildByType<FLAlertLayer>(0) || this->getChildByType<DialogLayer>(0) || CCScene::get()->getChildByType<FLAlertLayer>(0) || !CCScene::get()->getChildByID("MenuLayer")) return;
 #define EARLY_RETURN\
 	RETURN_IF_DISABLED\
 	RETURN_IF_NOT_ACTIVE

@@ -25,6 +25,11 @@
 			"type": "bool",
 			"default": true
 		},
+		"creatorLayer": {
+			"name": "Creator Menu (CreatorLayer)",
+			"type": "bool",
+			"default": true
+		},
 		"levelEditor": {
 			"name": "Level Editor",
 			"type": "bool",

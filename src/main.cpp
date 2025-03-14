@@ -728,8 +728,8 @@ $on_mod(Loaded) {
 	});
 	binds->registerBindable({
 		"menulayer-garage"_spr,
-		"Garage",
-		"Enter the garage from the main menu.",
+		"Garage (Icon Kit)",
+		"Enter the garage/icon kit from the main menu.",
 		{ Keybind::create(KEY_G, ALT_CTRL) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
 	});
@@ -743,27 +743,131 @@ $on_mod(Loaded) {
 	binds->registerBindable({
 		"menulayer-my-profile"_spr,
 		"My Profile",
-		"Enter your own profile page from the main menu.",
+		"Open your own profile page from the main menu.",
 		{ Keybind::create(KEY_P, ALT_CTRL) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
 	});
 	binds->registerBindable({
 		"menulayer-daily-chests"_spr,
 		"Daily Chests",
-		"Enter your own profile page from the main menu.",
+		"Open the daily chests menu.",
 		{ Keybind::create(KEY_D, CTRL_CMD) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
 	});
 	binds->registerBindable({
 		"menulayer-texture-packs"_spr,
-		"Daily Chests",
-		"Enter your own profile page from the main menu.",
-		{ Keybind::create(KEY_D, CTRL_CMD) },
+		"Texture Packs",
+		"Open your texture packs from the main menu.\n\n<cy>Requires Texture Loader by Geode Team.</c>",
+		{ Keybind::create(KEY_T, CTRL_CMD) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts", false
 	});
-	/* —————————————————————————— REDASH KEYBINDS ———————————————————————— */
-	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > daily-node > main-node > level-menu > skip-button
-	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > daily-node > main-node > level-menu > view-button
+	/* —————————————————————————— CREATORLAYER KEYBINDS ———————————————————————— */
+	binds->registerBindable({
+		"creatorlayer-create"_spr,
+		"Create",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_C, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-saved"_spr,
+		"Saved",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_S, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-scores"_spr,
+		"Scores",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_O, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-quests"_spr,
+		"Quests",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_Q, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-versus"_spr,
+		"Versus",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_V, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-map"_spr,
+		"The Map",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_T, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-daily"_spr,
+		"Daily Level",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_D, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-weekly"_spr,
+		"Weekly Level",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_W, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-event"_spr,
+		"Event Level",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_E, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-gauntlets"_spr,
+		"Gauntlets",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_G, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-featured"_spr,
+		"Featured",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_F, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-lists"_spr,
+		"Lists",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_L, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-paths"_spr,
+		"Paths",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_P, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-map-packs"_spr,
+		"Map Packs",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_M, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	binds->registerBindable({
+		"creatorlayer-search"_spr,
+		"Search",
+		"Self-explanatory.",
+		{ Keybind::create(KEY_A, Modifier::Shift) },
+		"Global/JustEnoughKeybinds/Creator Menu (CreatorLayer) Shortcuts", false
+	});
+	/* —————————————————————————— REDASH KEYBINDS ———————————————————————— */ // DONE
 	binds->registerBindable({
 		"menulayer-redash-daily"_spr,
 		"Daily Level",
@@ -771,8 +875,6 @@ $on_mod(Loaded) {
 		{ Keybind::create(KEY_D, CTRL_CMD | Modifier::Shift) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
 	});
-	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > weekly-node > main-node > level-menu > skip-button
-	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > weekly-node > main-node > level-menu > view-button
 	binds->registerBindable({
 		"menulayer-redash-weekly"_spr,
 		"Weekly Level",
@@ -780,8 +882,6 @@ $on_mod(Loaded) {
 		{ Keybind::create(KEY_W, CTRL_CMD | Modifier::Shift) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
 	});
-	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > event-node > main-node > level-menu > skip-button
-	// ninxout.redash/redash-menu > ninxout.redash/dailies-menu > event-node > main-node > level-menu > view-button
 	binds->registerBindable({
 		"menulayer-redash-event"_spr,
 		"Event Level",
