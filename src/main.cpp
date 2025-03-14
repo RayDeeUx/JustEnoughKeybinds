@@ -842,7 +842,7 @@ $on_mod(Loaded) {
 		"menulayer-redash-search"_spr,
 		"Search",
 		"<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
-		{ Keybind::create(KEY_S, ALT_CTRL | Modifier::Shift) },
+		{ Keybind::create(KEY_E, ALT_CTRL | Modifier::Shift) },
 		"Global/JustEnoughKeybinds/Main Menu Shortcuts/Overcharged Main Menu", false
 	});
 	// check BOTH right-side-menu AND ninxout.redash/redash-menu > ninxout.redash/main-menu
