@@ -39,7 +39,9 @@ class $modify(MyGJGarageLayer, GJGarageLayer) {
     DEFINE_KEYBIND
 	bool init() {
     	if (!GJGarageLayer::init()) return false;
-    	if (Manager::getSharedInstance()->isMrmanamaOrGarageReimagined) return true;
+    	if (Manager::getSharedInstance()->isMrmanamaOrGarageReimagined && Utils::getBool("gjGarageLayer")) {
+    		FLAlertLayer::create("Heads up!", "Things might crash.\n<c_>Be careful out there.</c>\n--JustEnoughKeybinds", "I understand")->show();
+    	}
     	this->defineKeybind("garage-cube"_spr, [this]() {
 			EARLY_RETURN
 			SELECT_TAB("cube")
