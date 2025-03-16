@@ -21,7 +21,7 @@ using namespace keybinds;
 #define FIRST_BUTTON_IN(query) Utils::pressFirstButtonInMenu(query, this);
 #define LAST_BUTTON_IN(query) Utils::pressLastButtonInMenu(query, this);
 #define FIND_TAB(tab) "category-menu > " tab "-button"
-#define SELECT_TAB(tab) if (const auto tabButton = this->querySelector(FIND_TAB(tab))) return GJGarageLayer::onSelectTab(tabButton);
+#define SELECT_TAB(tab) if (const auto tabButton = this->querySelector(FIND_TAB(tab)); tabButton) return GJGarageLayer::onSelectTab(tabButton);
 #define RETURN_IF_DISABLED if (!Utils::modEnabled() || !Utils::getBool("gjGarageLayer")) return;
 #define RETURN_IF_COLOR_PAGE if (this->getChildByType<CharacterColorPage>(0)) return;
 #define RETURN_IF_SHARDS_PAGE if (CCScene::get()->getChildByType<ShardsPage>(0)) return;
