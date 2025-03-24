@@ -33,18 +33,15 @@ using namespace keybinds;
 
 #define LEVEL_BROWSER_LAYER_RETURN\
 	EARLY_RETURN("levelBrowserLayer")\
-	if (CCScene::get()->getChildByType<LevelInfoLayer>(0)) return;\
-	if (CCScene::get()->getChildByType<LevelListLayer>(0)) return;
+	if (CCScene::get()->getChildByType<LevelInfoLayer>(0) || CCScene::get()->getChildByType<LevelListLayer>(0)) return;
 
 #define LEVEL_INFO_LAYER_RETURN\
 	EARLY_RETURN("levelInfoLayer")\
-	if (CCScene::get()->getChildByType<LevelBrowserLayer>(0)) return;\
-	if (CCScene::get()->getChildByType<LevelListLayer>(0)) return;
+	if (CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelListLayer>(0)) return;
 
 #define LEVEL_LIST_LAYER_RETURN\
 	EARLY_RETURN("levelListLayer")\
-	if (CCScene::get()->getChildByType<LevelBrowserLayer>(0)) return;\
-	if (CCScene::get()->getChildByType<LevelInfoLayer>(0)) return;\
+	if (CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelInfoLayer>(0)) return;\
 
 
 using namespace geode::prelude;
