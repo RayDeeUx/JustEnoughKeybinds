@@ -85,7 +85,7 @@ $on_mod(Loaded) {
 		"first-page"_spr,
 		"Go To First Page",
 		"Go to the first page.<cy>Requires BetterInfo by Cvolton if viewing comments.</c>",
-		{ Keybind::create(LEFT_ARROW, Modifier::Shift) },
+		{ Keybind::create(KEY_ArrowLeft, Modifier::Shift),  Keybind::create(KEY_Left, Modifier::Shift) },
 		"JustEnoughKeybinds/Partially Universal Shortcuts", false
 	});
 	binds->registerBindable({
@@ -441,7 +441,7 @@ $on_mod(Loaded) {
 		"previous-options-page"_spr,
 		"Previous Options Page",
 		"View the previous Options page.",
-		{ Keybind::create(LEFT_ARROW) },
+		{ Keybind::create(KEY_ArrowLeft), Keybind::create(KEY_Left) },
 		"JustEnoughKeybinds/More Options Navigation", false
 	});
 	binds->registerBindable({
@@ -561,7 +561,7 @@ $on_mod(Loaded) {
 		"garage-previous-page"_spr,
 		"Previous Page",
 		"View the next page of your current category in the icon kit (or the Shards of Power page).",
-		{ Keybind::create(LEFT_ARROW) },
+		{ Keybind::create(KEY_ArrowLeft), Keybind::create(KEY_Left) },
 		"JustEnoughKeybinds/Icon Kit", false
 	});
 	binds->registerBindable({
@@ -575,7 +575,7 @@ $on_mod(Loaded) {
 		"garage-first-page"_spr,
 		"First Page",
 		"View the first page of your current category in the icon kit.",
-		{ Keybind::create(LEFT_ARROW, Modifier::Shift) },
+		{ Keybind::create(KEY_ArrowLeft, Modifier::Shift), Keybind::create(KEY_Left, Modifier::Shift) },
 		"JustEnoughKeybinds/Icon Kit", false
 	});
 	binds->registerBindable({
@@ -676,7 +676,7 @@ $on_mod(Loaded) {
 		"previous-page"_spr,
 		"Go To Previous Page",
 		"Go to the previous page.",
-		{ Keybind::create(LEFT_ARROW) },
+		{ Keybind::create(KEY_ArrowLeft), Keybind::create(KEY_Left) },
 		"JustEnoughKeybinds/Comment Viewing Shortcuts", false
 	});
 	binds->registerBindable({
