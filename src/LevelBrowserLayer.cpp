@@ -31,8 +31,14 @@ using namespace keybinds;
 
 #define LEVEL_BROWSER_LAYER_RETURN EARLY_RETURN("levelBrowserLayer")
 #define LEADERBOARDS_LAYER_RETURN EARLY_RETURN("leaderboardsLayer")
-#define LEVEL_INFO_LAYER_RETURN EARLY_RETURN("levelInfoLayer")
-#define LEVEL_LIST_LAYER_RETURN EARLY_RETURN("levelListLayer")
+#define LEVEL_INFO_LAYER_RETURN\
+	EARLY_RETURN("levelInfoLayer")\
+	if (CCScene::get()->getChildByType<LevelListLayer>(0)) return;\
+
+#define LEVEL_LIST_LAYER_RETURN\
+	EARLY_RETURN("levelListLayer")\
+	if (CCScene::get()->getChildByType<LevelInfoLayer>(0)) return;\
+
 
 using namespace geode::prelude;
 
