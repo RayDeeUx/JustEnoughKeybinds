@@ -233,7 +233,7 @@ class $modify(MyLeaderboardsLayer, LeaderboardsLayer) {
 #define PROFILEPAGE_UNFOCUSED_RETURN if (this->getChildByID("InfoLayer") || CCScene::get()->getChildByType<FLAlertLayer>(1)) return;
 #define PROFILEPAGE_RETURN\
 	RETURN_IF_DISABLED("profilePage")\
-	if (Utils::getBool("checkUnfocused")) { PROFILEPAGE_UNFOCUSED_RETURN } else if (CCScene::get()->getChildByID("FLAlertLayer")) { return; }
+	if (Utils::getBool("checkUnfocused")) { PROFILEPAGE_UNFOCUSED_RETURN } else if (CCScene::get()->getChildByID("FLAlertLayer") || GJBaseGameLayer::get()) { return; }
 
 class $modify(MyProfilePage, ProfilePage) {
 	DEFINE_KEYBIND
@@ -280,7 +280,7 @@ class $modify(MyProfilePage, ProfilePage) {
 #define INFOLAYER_UNFOCUSED_RETURN if (!CCScene::get()->getChildByID("ProfilePage") && CCScene::get()->getChildByType<FLAlertLayer>(1)) return;
 #define INFOLAYER_RETURN\
 	RETURN_IF_DISABLED("infoLayer")\
-	if (Utils::getBool("checkUnfocused")) { INFOLAYER_UNFOCUSED_RETURN } else if (CCScene::get()->getChildByID("FLAlertLayer")) { return; }
+	if (Utils::getBool("checkUnfocused")) { INFOLAYER_UNFOCUSED_RETURN } else if (CCScene::get()->getChildByID("FLAlertLayer") || GJBaseGameLayer::get()) { return; }
 
 class $modify(MyInfoLayer, InfoLayer) {
 	DEFINE_KEYBIND
