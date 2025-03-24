@@ -2,22 +2,30 @@
 #include <Geode/modify/EditorUI.hpp>
 #include "Utils.hpp"
 
+#define DEFINE_KEYBIND\
+	void defineKeybind(const char* id, std::function<void()> callback) {\
+		this->addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {\
+			if (event->isDown()) callback();\
+			return ListenerResult::Propagate;\
+		}, id);\
+	}
+
 #define EDITOR_PAUSE_LAYER_CREATED EditorPauseLayer* epl = EditorPauseLayer::create(this->m_editorLayer)
+#define RETURN_IF_NOT_ACTIVE if (!LevelEditorLayer::get() || LevelEditorLayer::get()->getChildByType<FLAlertLayer>(0) || this->getChildByType<FLAlertLayer>(0) || CCScene::get()->getChildByType<FLAlertLayer>(0)) return;
+#define RETURN_IF_DISABLED if (!Utils::modEnabled() || !Utils::getBool("levelEditor") || m_editorLayer->m_playbackMode != PlaybackMode::Not) return;
+#define EARLY_RETURN\
+	RETURN_IF_DISABLED\
+	RETURN_IF_NOT_ACTIVE
 
 using namespace geode::prelude;
 using namespace keybinds;
 
 class $modify(MyEditorUI, EditorUI) {
-	void defineKeybind(const char* id, std::function<void()> callback) {
-		this->addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {
-			if (event->isDown()) callback();
-			return ListenerResult::Propagate;
-		}, id);
-	}
+	DEFINE_KEYBIND
 	bool init(LevelEditorLayer* p0) {
 		if (!EditorUI::init(p0)) return false;
 		this->defineKeybind("save-editor-level"_spr, [this]() {
-			if (!Utils::modEnabled() || !Utils::getBool("levelEditor")) return;
+			EARLY_RETURN
 			if (EDITOR_PAUSE_LAYER_CREATED) {
 				epl->saveLevel();
 				epl->keyBackClicked();
@@ -29,7 +37,7 @@ class $modify(MyEditorUI, EditorUI) {
 			}
 		});
 		this->defineKeybind("save-and-play-editor"_spr, [this]() {
-			if (!Utils::modEnabled() || !Utils::getBool("levelEditor")) return;
+			EARLY_RETURN
 			// simulate all the button clicks! because robtop is such a genius programmer :D
 			const bool noEPLBeforeFaking = !this->getParent()->getChildByType<EditorPauseLayer>(0);
 			if (noEPLBeforeFaking) this->onPause(nullptr);
@@ -42,11 +50,11 @@ class $modify(MyEditorUI, EditorUI) {
 			if (const auto sap = typeinfo_cast<CCMenuItemSpriteExtra*>(saveAndPlay)) return sap->activate();
 		});
 		this->defineKeybind("save-and-exit-editor"_spr, [this]() {
-			if (!Utils::modEnabled() || !Utils::getBool("levelEditor")) return;
+			EARLY_RETURN
 			if (EDITOR_PAUSE_LAYER_CREATED) return epl->onSaveAndExit(nullptr);
 		});
 		this->defineKeybind("exit-editor"_spr, [this]() {
-			if (!Utils::modEnabled() || !Utils::getBool("levelEditor")) return;
+			EARLY_RETURN
 			const bool noEPLBeforeFaking = !this->getParent()->getChildByType<EditorPauseLayer>(0);
 			if (noEPLBeforeFaking) this->onPause(nullptr);
 
