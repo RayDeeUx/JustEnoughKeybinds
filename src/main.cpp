@@ -10,14 +10,10 @@
 #ifdef GEODE_IS_MACOS
 #define CTRL_CMD Modifier::Command
 #define ALT_CTRL Modifier::Control
-#define RIGHT_ARROW KEY_ArrowRight
-#define LEFT_ARROW KEY_ArrowLeft
 #define MINUS KEY_Subtract
 #else
 #define CTRL_CMD Modifier::Control
 #define ALT_CTRL Modifier::Alt
-#define RIGHT_ARROW KEY_Right
-#define LEFT_ARROW KEY_Left
 #define MINUS KEY_OEMMinus
 #endif
 
@@ -96,7 +92,7 @@ $on_mod(Loaded) {
 		"last-page"_spr,
 		"Go To Last Page",
 		"Go to the last page.\n\n<cy>Requires BetterInfo by Cvolton if browsing levels/level lists or viewing comments.</c>",
-		{ Keybind::create(RIGHT_ARROW, Modifier::Shift) },
+		{ Keybind::create(KEY_ArrowRight, Modifier::Shift), Keybind::create(KEY_Right, Modifier::Shift) },
 		"JustEnoughKeybinds/Partially Universal Shortcuts", false
 	});
 	binds->registerBindable({
@@ -452,7 +448,7 @@ $on_mod(Loaded) {
 		"next-options-page"_spr,
 		"Next Options Page",
 		"View the next Options page.",
-		{ Keybind::create(RIGHT_ARROW) },
+		{ Keybind::create(KEY_ArrowRight), Keybind::create(KEY_Right) },
 		"JustEnoughKeybinds/More Options Navigation", false
 	});
 	/* ————————————————————————— GJGARAGELAYER KEYBINDS ————————————————————————— */ // DONE
@@ -572,7 +568,7 @@ $on_mod(Loaded) {
 		"garage-next-page"_spr,
 		"Next Page",
 		"View the next page of your current category in the icon kit (or the Shards of Power page).",
-		{ Keybind::create(RIGHT_ARROW) },
+		{ Keybind::create(KEY_ArrowRight), Keybind::create(KEY_Right) },
 		"JustEnoughKeybinds/Icon Kit", false
 	});
 	binds->registerBindable({
@@ -586,7 +582,7 @@ $on_mod(Loaded) {
 		"garage-last-page"_spr,
 		"Last Page",
 		"View the last page of your current category in the icon kit.",
-		{ Keybind::create(RIGHT_ARROW, Modifier::Shift) },
+		{ Keybind::create(KEY_ArrowRight, Modifier::Shift), Keybind::create(KEY_Right, Modifier::Shift) },
 		"JustEnoughKeybinds/Icon Kit", false
 	});
 	binds->registerBindable({
@@ -687,7 +683,7 @@ $on_mod(Loaded) {
 		"next-page"_spr,
 		"Go To Next Page",
 		"Go to the next page.",
-		{ Keybind::create(RIGHT_ARROW) },
+		{ Keybind::create(KEY_ArrowRight), Keybind::create(KEY_Right) },
 		"JustEnoughKeybinds/Comment Viewing Shortcuts", false
 	});
 	binds->registerBindable({
