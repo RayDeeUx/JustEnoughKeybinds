@@ -10,7 +10,13 @@
 		}, id);\
 	}
 
-#define EDITOR_PAUSE_LAYER_CREATED EditorPauseLayer* epl = EditorPauseLayer::create(this->m_editorLayer)
+#define CREATE_EDITOR_PAUSE_LAYER\
+	const bool noEPLBeforeFaking = !this->getParent()->getChildByType<EditorPauseLayer>(0);\
+	if (noEPLBeforeFaking) this->onPause(nullptr);\
+	const auto epl = this->getParent()->getChildByType<EditorPauseLayer>(0);\
+	if (!epl) return;\
+	if (noEPLBeforeFaking) epl->setVisible(false);
+
 #define RETURN_IF_NOT_ACTIVE if (!LevelEditorLayer::get() || LevelEditorLayer::get()->getChildByType<FLAlertLayer>(0) || this->getChildByType<FLAlertLayer>(0) || CCScene::get()->getChildByType<FLAlertLayer>(0)) return;
 #define RETURN_IF_DISABLED if (!Utils::modEnabled() || !Utils::getBool("levelEditor") || m_editorLayer->m_playbackMode != PlaybackMode::Not) return;
 #define EARLY_RETURN\
@@ -26,42 +32,31 @@ class $modify(MyEditorUI, EditorUI) {
 		if (!EditorUI::init(p0)) return false;
 		this->defineKeybind("save-editor-level"_spr, [this]() {
 			EARLY_RETURN
-			if (EDITOR_PAUSE_LAYER_CREATED) {
-				epl->saveLevel();
-				epl->keyBackClicked();
-				return FLAlertLayer::create(
-					"Editor Level Saved",
-					"Your <cj>level</c> has been <cg>saved</c>.",
-					"OK"
-				)->show();
-			}
+			CREATE_EDITOR_PAUSE_LAYER
+			epl->saveLevel();
+			if (noEPLBeforeFaking) epl->keyBackClicked();
+			return FLAlertLayer::create(
+				"Editor Level Saved",
+				"Your <cj>level</c> has been <cg>saved</c>.",
+				"OK"
+			)->show();
 		});
 		this->defineKeybind("save-and-play-editor"_spr, [this]() {
 			EARLY_RETURN
 			// simulate all the button clicks! because robtop is such a genius programmer :D
-			const bool noEPLBeforeFaking = !this->getParent()->getChildByType<EditorPauseLayer>(0);
-			if (noEPLBeforeFaking) this->onPause(nullptr);
-
-			const auto epl = this->getParent()->getChildByType<EditorPauseLayer>(0);
-			if (!epl) return;
-
-			if (noEPLBeforeFaking) epl->setVisible(false); // illusions! yay :D
+			CREATE_EDITOR_PAUSE_LAYER
 			CCNode* saveAndPlay = epl->querySelector("resume-menu > save-and-play-button");
 			if (const auto sap = typeinfo_cast<CCMenuItemSpriteExtra*>(saveAndPlay)) return sap->activate();
 		});
 		this->defineKeybind("save-and-exit-editor"_spr, [this]() {
 			EARLY_RETURN
-			if (EDITOR_PAUSE_LAYER_CREATED) return epl->onSaveAndExit(nullptr);
+			CREATE_EDITOR_PAUSE_LAYER
+			return epl->onSaveAndExit(nullptr);
 		});
 		this->defineKeybind("exit-editor"_spr, [this]() {
 			EARLY_RETURN
-			const bool noEPLBeforeFaking = !this->getParent()->getChildByType<EditorPauseLayer>(0);
-			if (noEPLBeforeFaking) this->onPause(nullptr);
-
-			const auto epl = this->getParent()->getChildByType<EditorPauseLayer>(0);
-			if (!epl || CCScene::get()->getChildByType<FLAlertLayer>(0)) return;
-
-			if (noEPLBeforeFaking) epl->setVisible(false); // illusions! yay :D
+			CREATE_EDITOR_PAUSE_LAYER
+			if (CCScene::get()->getChildByType<FLAlertLayer>(0)) return;
 			CCNode* exitButton = epl->querySelector("resume-menu > exit-button");
 			if (!exitButton) return;
 
