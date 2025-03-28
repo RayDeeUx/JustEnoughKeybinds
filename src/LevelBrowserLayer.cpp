@@ -24,24 +24,26 @@ using namespace keybinds;
 #define PRESS(query) Utils::activateButtonSafe(query, this);
 #define FIRST_BUTTON_IN(query) Utils::pressFirstButtonInMenu(query, this);
 #define RETURN_IF_DISABLED(setting) if (!Utils::modEnabled() || !Utils::getBool(setting)) return;
-#define RETURN_IF_NOT_ACTIVE if (CCScene::get()->getChildByType<FLAlertLayer>(0)) return;
+#define RETURN_IF_NOT_ACTIVE if (CCScene::get()->getChildByType<FLAlertLayer>(0) || GJBaseGameLayer::get()) return;
 #define EARLY_RETURN(setting)\
 	RETURN_IF_DISABLED(setting)\
 	RETURN_IF_NOT_ACTIVE
 
-#define LEADERBOARDS_LAYER_RETURN EARLY_RETURN("leaderboardsLayer")
+#define LEADERBOARDS_LAYER_RETURN\
+	EARLY_RETURN("leaderboardsLayer")\
+	if (!CCScene::get()->getChildByType<LeaderboardsLayer>(0)) return;
 
 #define LEVEL_BROWSER_LAYER_RETURN\
 	EARLY_RETURN("levelBrowserLayer")\
-	if (CCScene::get()->getChildByType<LevelInfoLayer>(0) || CCScene::get()->getChildByType<LevelListLayer>(0)) return;
+	if (!CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelInfoLayer>(0) || CCScene::get()->getChildByType<LevelListLayer>(0)) return;
 
 #define LEVEL_INFO_LAYER_RETURN\
 	EARLY_RETURN("levelInfoLayer")\
-	if (CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelListLayer>(0)) return;
+	if (!CCScene::get()->getChildByType<LevelInfoLayer>(0) || CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelListLayer>(0)) return;
 
 #define LEVEL_LIST_LAYER_RETURN\
 	EARLY_RETURN("levelListLayer")\
-	if (CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelInfoLayer>(0)) return;\
+	if (!CCScene::get()->getChildByType<LevelListLayer>(0) || CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelInfoLayer>(0)) return;\
 
 
 using namespace geode::prelude;
