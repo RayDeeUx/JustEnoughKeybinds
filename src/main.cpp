@@ -12,7 +12,7 @@ $on_mod(Loaded) {
 		geode::openSettingsPopup(Mod::get());
     });
 	listenForKeybindSettingPresses("geode-mods-list", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
-		if (!Utils::modEnabled() || !down || repeat || SCENE_HAS("ModsLayer") || SCENE_HAS("ModsLayerWrapper")) return;
+		if (!Utils::modEnabled() || !down || repeat || SCENE_HAS("ModsLayer") || SCENE_HAS("ModsLayerWrapper")) return ListenerResult::Propagate;
 		GJBaseGameLayer* gjbgl = GJBaseGameLayer::get();
 		CCNode* jasminesGeodeButton = nullptr;
 		if (Manager::getSharedInstance()->isGeodeInPauseMenu) {
@@ -33,10 +33,12 @@ $on_mod(Loaded) {
 		} else if (!gjbgl) {
 			geode::openModsList();
 		}
+		return ListenerResult::Propagate;
 	});
 	listenForKeybindSettingPresses("open-settings", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
 		if (!Utils::modEnabled() || !down || repeat || GJBaseGameLayer::get()) return ListenerResult::Propagate;
 		OptionsLayer::create()->onOptions(nullptr);
+		return ListenerResult::Propagate;
 	});
 
 	Mod::get()->setLoggingEnabled(Utils::getBool("logging"));
