@@ -200,8 +200,8 @@ class $modify(MyLevelListLayer, LevelListLayer) {
 
 class $modify(MyLeaderboardsLayer, LeaderboardsLayer) {
 	DEFINE_KEYBIND
-	bool init(LeaderboardStat leaderboardStat) {
-		if (!LeaderboardsLayer::init(leaderboardStat)) return false;
+	bool init(LeaderboardType type, LeaderboardStat stat) {
+		if (!LeaderboardsLayer::init(type, stat)) return false;
 		this->defineKeybind("refresh-page", [this]() {
 			LEADERBOARDS_LAYER_RETURN
 			BETTERINFO_RETURN
