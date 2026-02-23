@@ -5,6 +5,13 @@
 
 using namespace geode::prelude;
 
+/*
+
+	"dependencies": {
+		"geode.node-ids": ">=1.22.0"
+	},
+*/
+
 #define DEFINE_KEYBIND\
 	void defineKeybind(std::string id, std::function<void()> callback) {\
 		this->addEventListener(\
