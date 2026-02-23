@@ -5,7 +5,6 @@
 #include "Utils.hpp"
 
 using namespace geode::prelude;
-using namespace keybinds;
 
 #define DEFINE_KEYBIND\
 	void defineKeybind(std::string id, std::function<void()> callback) {\
