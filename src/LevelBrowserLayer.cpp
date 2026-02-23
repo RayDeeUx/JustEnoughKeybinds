@@ -44,7 +44,7 @@ using namespace geode::prelude;
 
 #define LEVEL_LIST_LAYER_RETURN\
 	EARLY_RETURN("levelListLayer")\
-	if (!CCScene::get()->getChildByType<LevelListLayer>(0) || CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelInfoLayer>(0)) return;\
+	if (!CCScene::get()->getChildByType<LevelListLayer>(0) || CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelInfoLayer>(0) || !this->list || this->list->m_isEditable) return;\
 
 
 using namespace geode::prelude;
@@ -228,15 +228,20 @@ class $modify(MyLeaderboardsLayer, LeaderboardsLayer) {
 };
 
 #define PRESS_FROM_MAIN_LAYER(query) Utils::activateButtonSafe(query, this->m_mainLayer);
-#define PROFILEPAGE_UNFOCUSED_RETURN if (this->getChildByID("InfoLayer") || CCScene::get()->getChildByType<FLAlertLayer>(1)) return;
 #define PROFILEPAGE_RETURN\
 	RETURN_IF_DISABLED("profilePage")\
-	if (Utils::getBool("checkUnfocused")) { PROFILEPAGE_UNFOCUSED_RETURN } else if (CCScene::get()->getChildByID("FLAlertLayer") || GJBaseGameLayer::get()) { return; }
+	if (GJBaseGameLayer::get() || Manager::getSharedInstance()->profilePages.top() && Manager::getSharedInstance()->profilePages.top() != this) { return; }
 
 class $modify(MyProfilePage, ProfilePage) {
+	struct Fields {
+		~Fields() {
+			if (!Manager::getSharedInstance()->profilePages.empty()) { Manager::getSharedInstance()->profilePages.pop(); }
+		}
+	};
 	DEFINE_KEYBIND
 	bool init(int profile, bool ownProfile) {
 		if (!ProfilePage::init(profile, ownProfile)) return false;
+		Manager::getSharedInstance()->profilePages.push(this);
 		this->defineKeybind("refresh-page", [this]() {
 			PROFILEPAGE_RETURN
 			PRESS_FROM_MAIN_LAYER("main-menu > refresh-button")
@@ -275,10 +280,9 @@ class $modify(MyProfilePage, ProfilePage) {
 
 #define PRESS_FROM_CCSCENE(query) Utils::activateButtonSafe(query, CCScene::get());
 #define PRESS_CVOLTON(node) PRESS_FROM_CCSCENE("cvolton.betterinfo/JumpToPageLayer > cvolton.betterinfo/main-layer > cvolton.betterinfo/button-menu > " node)
-#define INFOLAYER_UNFOCUSED_RETURN if (!CCScene::get()->getChildByID("ProfilePage") && CCScene::get()->getChildByType<FLAlertLayer>(1)) return;
 #define INFOLAYER_RETURN\
 	RETURN_IF_DISABLED("infoLayer")\
-	if (Manager::getSharedInstance()->infoLayers.top() != this) return;
+	if (GJBaseGameLayer::get() || Manager::getSharedInstance()->infoLayers.top() && Manager::getSharedInstance()->infoLayers.top() != this) return;
 
 class $modify(MyInfoLayer, InfoLayer) {
 	struct Fields {

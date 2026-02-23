@@ -1359,7 +1359,7 @@
 			},
 			"migrate-from": "raydeeux.justenoughkeybinds/info"
 		},
-		"level-list-favorite": {
+		"favorite": {
 			"name": "Favorite Level/List",
 			"description": "Favorite a level/list.",
 			"type": "keybind",
@@ -1773,6 +1773,9 @@
 			"type": "bool",
 			"default": false
 		}
+	},
+	"dependencies": {
+		"geode.node-ids": ">=1.22.0"
 	},
 	"issues": {
 		"url": "https://discord.com/channels/911701438269386882/1205523212444639292",

@@ -30,7 +30,7 @@ $on_mod(Loaded) {
  			}
 		}
 		if (const auto jgb = typeinfo_cast<CCMenuItemSpriteExtra*>(jasminesGeodeButton); jgb) {
-			jgb->activate(); // apparently it NEEDs to be typeinfo cast or else crash
+			jgb->activate();
 		} else if (!gjbgl) {
 			geode::openModsList();
 		}

@@ -22,9 +22,9 @@ public:
 	bool isFineOutline = false;
 	bool isGeodeInPauseMenu = false;
 	bool isSeparateDualIcons = false;
-	bool isGeodeTextureLoader = false;
 
 	std::stack<InfoLayer*> infoLayers;
+	std::stack<ProfilePage*> profilePages;
 
 	static Manager* getSharedInstance() {
 		if (!instance) {

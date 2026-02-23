@@ -21,7 +21,6 @@ class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 			if (!manager->isBetterInfo && modID == "cvolton.betterinfo") manager->isBetterInfo = true;
 			if (!manager->isLevelSize && modID == "hiimjustin000.level_size") manager->isLevelSize = true;
 			if (!manager->isFineOutline && modID == "alphalaneous.fine_outline") manager->isFineOutline = true;
-			if (!manager->isGeodeTextureLoader && modID == "geode.texture-loader") manager->isGeodeTextureLoader = true;
 			if (!manager->isSeparateDualIcons && modID == "weebify.separate_dual_icons") manager->isSeparateDualIcons = true;
 			if (!manager->isGeodeInPauseMenu && modID == "hiimjustin000.geode_in_pause_menu") manager->isGeodeInPauseMenu = true;
 		}
@@ -98,11 +97,6 @@ class $modify(MyMenuLayer, MenuLayer) {
 		this->defineKeybind("menulayer-daily-chests", [this]() {
 			EARLY_RETURN
 			MenuLayer::onDaily(nullptr);
-		});
-		this->defineKeybind("menulayer-texture-packs"_spr, [this, manager]() {
-			EARLY_RETURN
-			if (!manager->isGeodeTextureLoader) return;
-			PRESS("right-side-menu > geode.texture-loader/texture-loader-button")
 		});
 		log::info("is redash installed?");
 		if (!manager->isRedash) return true;
