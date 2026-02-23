@@ -1,16 +1,8 @@
-#include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <Geode/modify/DemonFilterSelectLayer.hpp>
 #include <Geode/modify/LevelSearchLayer.hpp>
 #include "Utils.hpp"
 
 using namespace geode::prelude;
-
-/*
-
-	"dependencies": {
-		"geode.node-ids": ">=1.22.0"
-	},
-*/
 
 #define DEFINE_KEYBIND\
 	void defineKeybind(std::string id, std::function<void()> callback) {\
