@@ -10,6 +10,7 @@ $on_mod(Loaded) {
 	listenForKeybindSettingPresses("open-settings", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
         if (!Utils::modEnabled() || !down || repeat || GJBaseGameLayer::get()) return ListenerResult::Propagate;
 		geode::openSettingsPopup(Mod::get());
+		return ListenerResult::Propagate;
     });
 	listenForKeybindSettingPresses("geode-mods-list", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
 		if (!Utils::modEnabled() || !down || repeat || SCENE_HAS("ModsLayer") || SCENE_HAS("ModsLayerWrapper")) return ListenerResult::Propagate;
