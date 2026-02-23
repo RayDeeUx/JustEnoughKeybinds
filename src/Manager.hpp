@@ -22,7 +22,7 @@ public:
 	bool isSeparateDualIcons = false;
 	bool isGeodeTextureLoader = false;
 
-	std::stack<InfoLayer*> infoLayers = {};
+	std::stack<InfoLayer*> infoLayers;
 
 	static Manager* getSharedInstance() {
 		if (!instance) {
