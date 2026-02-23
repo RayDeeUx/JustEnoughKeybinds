@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stack>
+
 // Manager.hpp structure by acaruso
 // reused with explicit permission and strong encouragement
 
