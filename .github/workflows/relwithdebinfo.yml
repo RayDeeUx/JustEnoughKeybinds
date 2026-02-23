@@ -1,4 +1,4 @@
-name: RelWithDebInfo
+name: Release
 
 on:
   workflow_dispatch:
@@ -19,8 +19,8 @@ jobs:
           os: macos-latest
 
         - name: iOS
-         os: macos-latest
-         target: iOS
+          os: macos-latest
+          target: iOS
 
         - name: Android32
           os: ubuntu-latest
@@ -36,10 +36,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build the mod (RelWithDebInfo)
+      - name: Build the mod (Release)
         uses: geode-sdk/build-geode-mod@main
         with:
           build-config: RelWithDebInfo
+          export-symbols: true
           export-pdb: true
           # bindings: RayDeeUx/bindings
           # bindings-ref: "foobar"
