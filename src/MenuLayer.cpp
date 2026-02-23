@@ -32,7 +32,6 @@ class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 		log::info("manager->isFineOutline: {}", manager->isFineOutline);
 		log::info("manager->isSeparateDualIcons: {}", manager->isSeparateDualIcons);
 		log::info("manager->isGeodeInPauseMenu: {}", manager->isGeodeInPauseMenu);
-		log::info("manager->isMrmanamaOrGarageReimagined: {}", manager->isMrmanamaOrGarageReimagined);
 		return true;
 	}
 };
