@@ -1,13 +1,14 @@
 {
-	"geode": "4.3.1",
+	"geode": "5.0.0-beta.4",
 	"gd": {
-		"win": "2.2074",
-		"mac": "2.2074",
-		"android": "2.2074"
+		"win": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081",
+		"android": "2.2081"
 	},
 	"id": "raydeeux.justenoughkeybinds",
 	"name": "JustEnoughKeybinds",
-	"version": "v1.0.1",
+	"version": "v1.0.2",
 	"developer": "RayDeeUx",
 	"description": "Read the mod name. (Formerly part of ErysEdits.)",
 	"repository": "https://github.com/RayDeeUx/JustEnoughKeybinds",
@@ -22,7 +23,7 @@
 			"type": "title"
 		},
 		"menuLayer": {
-			"name": "Main Menu",
+			"name": "Main Menu (MenuLayer)",
 			"type": "bool",
 			"default": true
 		},
@@ -37,7 +38,7 @@
 			"default": true
 		},
 		"pauseLayer": {
-			"name": "Pause Layer",
+			"name": "Pause Menu (PauseLayer)",
 			"type": "bool",
 			"default": true
 		},
@@ -67,12 +68,12 @@
 			"default": true
 		},
 		"gjGarageLayer": {
-			"name": "Icon Kit",
+			"name": "Garage (Icon Kit)",
 			"type": "bool",
 			"default": true
 		},
 		"infoLayer": {
-			"name": "Info Layer",
+			"name": "Comments Sections (InfoLayer)",
 			"type": "bool",
 			"default": true
 		},
@@ -86,16 +87,1686 @@
 			"type": "bool",
 			"default": true
 		},
+		"pretty-important-keybinds-header": {
+			"name": "Pretty Important Keybinds",
+			"type": "title"
+		},
+		"open-settings": {
+			"name": "JustEnoughKeybinds Settings",
+			"description": "Open the settings menu for JustEnoughKeybinds.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+Ctrl+E",
+				"mac": "Shift+Ctrl+Cmd+E",
+				"ios": "Shift+Ctrl+Cmd+E",
+				"android": "Shift+Alt+Ctrl+E"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/open-settings"
+		},
+		"geode-mods-list": {
+			"name": "Geode Mods List",
+			"description": "Open the Geode mods list.\n\n<cy>JustEnoughKeybinds will try to make a best effort to open the Geode mods list without exiting the current screen if you have \"Geode in Pause Menu\" by hiimjasmine00 installed.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+Ctrl+G",
+				"mac": "Shift+Ctrl+Cmd+G",
+				"ios": "Shift+Ctrl+Cmd+G",
+				"android": "Shift+Alt+Ctrl+G"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/geode-mods-list"
+		},
+		"menulayer-keybinds-header": {
+			"name": "Main Menu (MenuLayer) Keybinds",
+			"type": "title"
+		},
+		"menulayer-globed": {
+			"name": "Open Globed",
+			"description": "Enter Globed from the main menu.\n\n<cy>Requires Globed by dankmeme01. No, this does not automatically join Globed servers/lobbies/rooms for you.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+G",
+				"mac": "Cmd+G",
+				"ios": "Cmd+G",
+				"android": "Ctrl+G"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-globed"
+		},
+		"menulayer-garage": {
+			"name": "Open Garage (Icon Kit)",
+			"description": "Enter the garage/icon kit from the main menu.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+G",
+				"mac": "Ctrl+G",
+				"ios": "Ctrl+G",
+				"android": "Alt+G"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-garage"
+		},
+		"menulayer-creator-menu": {
+			"name": "Open Creator Menu (CreatorLayer)",
+			"description": "Enter the garage/icon kit from the main menu.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+G",
+				"mac": "Ctrl+G",
+				"ios": "Ctrl+G",
+				"android": "Alt+G"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-online-menus"
+		},
+		"menulayer-my-profile": {
+			"name": "Open My Profile",
+			"description": "Open your own profile page from the main menu.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+P",
+				"mac": "Ctrl+P",
+				"ios": "Ctrl+P",
+				"android": "Alt+P"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-my-profile"
+		},
+		"menulayer-daily-chests": {
+			"name": "Open Daily Chests",
+			"description": "Open the daily chests menu.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+P",
+				"mac": "Cmd+P",
+				"ios": "Cmd+P",
+				"android": "Ctrl+P"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-daily-chests"
+		},
+		"creatorlayer-keybinds-header": {
+			"name": "Creator Menu (CreatorLayer) Keybinds",
+			"type": "title"
+		},
+		"creatorlayer-create": {
+			"name": "Create",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+C",
+				"mac": "Shift+C",
+				"ios": "Shift+C",
+				"android": "Shift+C"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-create"
+		},
+		"creatorlayer-saved": {
+			"name": "Saved",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+S",
+				"mac": "Shift+S",
+				"ios": "Shift+S",
+				"android": "Shift+S"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-saved"
+		},
+		"creatorlayer-scores": {
+			"name": "Saved",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+O",
+				"mac": "Shift+O",
+				"ios": "Shift+O",
+				"android": "Shift+O"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-scores"
+		},
+		"creatorlayer-quests": {
+			"name": "Quests",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Q",
+				"mac": "Shift+Q",
+				"ios": "Shift+Q",
+				"android": "Shift+Q"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-quests"
+		},
+		"creatorlayer-versus": {
+			"name": "Versus",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+V",
+				"mac": "Shift+V",
+				"ios": "Shift+V",
+				"android": "Shift+V"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-versus"
+		},
+		"creatorlayer-map": {
+			"name": "The Map",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+T",
+				"mac": "Shift+T",
+				"ios": "Shift+T",
+				"android": "Shift+T"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-map"
+		},
+		"creatorlayer-daily": {
+			"name": "Daily Level",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+D",
+				"mac": "Shift+D",
+				"ios": "Shift+D",
+				"android": "Shift+D"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-daily"
+		},
+		"creatorlayer-weekly": {
+			"name": "Weekly Level",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+W",
+				"mac": "Shift+W",
+				"ios": "Shift+W",
+				"android": "Shift+W"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-weekly"
+		},
+		"creatorlayer-event": {
+			"name": "Event Level",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+E",
+				"mac": "Shift+E",
+				"ios": "Shift+E",
+				"android": "Shift+E"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-event"
+		},
+		"creatorlayer-gauntlets": {
+			"name": "Gauntlets",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+G",
+				"mac": "Shift+G",
+				"ios": "Shift+G",
+				"android": "Shift+G"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-gauntlets"
+		},
+		"creatorlayer-featured": {
+			"name": "Featured",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+F",
+				"mac": "Shift+F",
+				"ios": "Shift+F",
+				"android": "Shift+F"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-featured"
+		},
+		"creatorlayer-lists": {
+			"name": "Lists",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+L",
+				"mac": "Shift+L",
+				"ios": "Shift+L",
+				"android": "Shift+L"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-lists"
+		},
+		"creatorlayer-paths": {
+			"name": "Paths",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+P",
+				"mac": "Shift+P",
+				"ios": "Shift+P",
+				"android": "Shift+P"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-paths"
+		},
+		"creatorlayer-map-packs": {
+			"name": "Map Packs",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+M",
+				"mac": "Shift+M",
+				"ios": "Shift+M",
+				"android": "Shift+M"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-map-packs"
+		},
+		"creatorlayer-search": {
+			"name": "Search",
+			"description": "Self-explanatory.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+A",
+				"mac": "Shift+A",
+				"ios": "Shift+A",
+				"android": "Shift+A"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/creatorlayer-search"
+		},
+		"game-settings-header": {
+			"name": "Game Settings (Options) Keybinds",
+			"type": "title"
+		},
+		"more-options-layer": {
+			"name": "Game Settings (Options) Shortcut",
+			"description": "Open your GD settings.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+O",
+				"mac": "Cmd+O",
+				"ios": "Cmd+O",
+				"android": "Ctrl+O"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/more-options-layer"
+		},
+		"previous-options-page": {
+			"name": "Previous Page",
+			"description": "View the previous Options page.",
+			"type": "keybind",
+			"default": {
+				"win": "Left",
+				"mac": "Left",
+				"ios": "Left",
+				"android": "Left"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/previous-options-page"
+		},
+		"next-options-page": {
+			"name": "Next Page",
+			"description": "View the next Options page.",
+			"type": "keybind",
+			"default": {
+				"win": "Right",
+				"mac": "Right",
+				"ios": "Right",
+				"android": "Right"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/next-options-page"
+		},
+		"garage-keybinds-header": {
+			"name": "Garage (Icon Kit) Keybinds",
+			"type": "title"
+		},
+		"garage-cube": {
+			"name": "Cube Tab",
+			"description": "View cubes of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "One",
+				"mac": "One",
+				"ios": "One",
+				"android": "One"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-cube"
+		},
+		"garage-ship": {
+			"name": "Ship Tab",
+			"description": "View ships of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Two",
+				"mac": "Two",
+				"ios": "Two",
+				"android": "Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-ship"
+		},
+		"garage-jetpack": {
+			"name": "Jetpack Tab",
+			"description": "View jetpacks of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Two",
+				"mac": "Shift+Two",
+				"ios": "Shift+Two",
+				"android": "Shift+Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-jetpack"
+		},
+		"garage-ball": {
+			"name": "Ball Tab",
+			"description": "View balls of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Three",
+				"mac": "Three",
+				"ios": "Three",
+				"android": "Three"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-ball"
+		},
+		"garage-ufo": {
+			"name": "UFO Tab",
+			"description": "View UFOs of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Four",
+				"mac": "Four",
+				"ios": "Four",
+				"android": "Four"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-ufo"
+		},
+		"garage-wave": {
+			"name": "Wave Tab",
+			"description": "View waves of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Five",
+				"mac": "Five",
+				"ios": "Five",
+				"android": "Five"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-wave"
+		},
+		"garage-robot": {
+			"name": "Robot Tab",
+			"description": "View robots of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Six",
+				"mac": "Six",
+				"ios": "Six",
+				"android": "Six"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-robot"
+		},
+		"garage-spider": {
+			"name": "Spider Tab",
+			"description": "View spiders of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Seven",
+				"mac": "Seven",
+				"ios": "Seven",
+				"android": "Seven"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-spider"
+		},
+		"garage-swing": {
+			"name": "Swing Tab",
+			"description": "View swings of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Eight",
+				"mac": "Eight",
+				"ios": "Eight",
+				"android": "Eight"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-swing"
+		},
+		"garage-trail": {
+			"name": "Trail + Special Animations Tab",
+			"description": "View trails and special animations of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Nine",
+				"mac": "Nine",
+				"ios": "Nine",
+				"android": "Nine"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-trail"
+		},
+		"garage-death-effect": {
+			"name": "Death Effect Tab",
+			"description": "View death effects of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Zero",
+				"mac": "Zero",
+				"ios": "Zero",
+				"android": "Zero"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-death-effect"
+		},
+		"garage-select-p1": {
+			"name": "Select Player 1",
+			"description": "Select Player 1 in the icon kit.\n\n<cy>Requires Separate Dual Icons by Weebify.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+One",
+				"mac": "Cmd+One",
+				"ios": "Cmd+One",
+				"android": "Ctrl+One"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-select-p1"
+		},
+		"garage-select-p2": {
+			"name": "Select Player 2",
+			"description": "Select Player 2 in the icon kit.\n\n<cy>Requires Separate Dual Icons by Weebify.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+Two",
+				"mac": "Cmd+Two",
+				"ios": "Cmd+Two",
+				"android": "Ctrl+Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-select-p2"
+		},
+		"garage-shards-page": {
+			"name": "Shards of Power",
+			"description": "View your Shards of Power progression.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+Two",
+				"mac": "Ctrl+Two",
+				"ios": "Ctrl+Two",
+				"android": "Alt+Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-shards-page"
+		},
+		"garage-colors-page": {
+			"name": "Color Customization",
+			"description": "Open the colors page of the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+C",
+				"mac": "Ctrl+C",
+				"ios": "Ctrl+C",
+				"android": "Alt+C"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-colors-page"
+		},
+		"garage-previous-page": {
+			"name": "Previous Page",
+			"description": "View the next page of your current category in the icon kit (or the Shards of Power page).",
+			"type": "keybind",
+			"default": {
+				"win": "Left",
+				"mac": "Left",
+				"ios": "Left",
+				"android": "Left"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-previous-page"
+		},
+		"garage-next-page": {
+			"name": "Next Page",
+			"description": "View the next page of your current category in the icon kit (or the Shards of Power page).",
+			"type": "keybind",
+			"default": {
+				"win": "Right",
+				"mac": "Right",
+				"ios": "Right",
+				"android": "Right"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-next-page"
+		},
+		"garage-first-page": {
+			"name": "First Page",
+			"description": "View the first page of your current category in the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Left",
+				"mac": "Shift+Left",
+				"ios": "Shift+Left",
+				"android": "Shift+Left"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-first-page"
+		},
+		"garage-last-page": {
+			"name": "Last Page",
+			"description": "View the last page of your current category in the icon kit.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Right",
+				"mac": "Shift+Right",
+				"ios": "Shift+Right",
+				"android": "Shift+Right"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-last-page"
+		},
+		"garage-col1": {
+			"name": "Primary Color",
+			"description": "Switch to the Primary Color/Col1 Tab.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+One",
+				"mac": "Shift+One",
+				"ios": "Shift+One",
+				"android": "Shift+One"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-col1"
+		},
+		"garage-col2": {
+			"name": "Secondary Color",
+			"description": "Switch to the Secondary Color/Col2 Tab.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Two",
+				"mac": "Shift+Two",
+				"ios": "Shift+Two",
+				"android": "Shift+Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-col2"
+		},
+		"garage-glow": {
+			"name": "Glow Color Tab",
+			"description": "Switch to the Glow Color Tab.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Three",
+				"mac": "Shift+Three",
+				"ios": "Shift+Three",
+				"android": "Shift+Three"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-glow"
+		},
+		"garage-outline": {
+			"name": "Outline Color Tab",
+			"description": "Switch to the Outline Color Tab.\n\n<cy>Requires Fine Outline by Alphalaneous.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Four",
+				"mac": "Shift+Four",
+				"ios": "Shift+Four",
+				"android": "Shift+Four"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/garage-outline"
+		},
+		"editor-keybinds-header": {
+			"name": "Level Editor Keybinds",
+			"type": "title"
+		},
+		"save-editor-level": {
+			"name": "Save Editing Level",
+			"description": "Saves editing your level <cy>without a confirmation</c>.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+S",
+				"mac": "Cmd+S",
+				"ios": "Cmd+S",
+				"android": "Ctrl+S"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/save-editor-level"
+		},
+		"save-and-play-editor": {
+			"name": "Save and Play Editor Level",
+			"description": "Saves and playtests the level in the editor <cy>without a confirmation</c>.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+Ctrl+S",
+				"mac": "Shift+Ctrl+Cmd+S",
+				"ios": "Shift+Ctrl+Cmd+S",
+				"android": "Shift+Alt+Ctrl+S"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/save-and-play-editor"
+		},
+		"save-and-exit-editor": {
+			"name": "Save and Exit Editor Level",
+			"description": "Saves and exits the level in the editor <cy>without a confirmation</c>.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+S",
+				"mac": "Shift+Cmd+S",
+				"ios": "Shift+Cmd+S",
+				"android": "Shift+Ctrl+S"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/save-and-exit-editor"
+		},
+		"exit-editor": {
+			"name": "Exit Editor",
+			"description": "Exit editing a level <cy>without saving</c>.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Two",
+				"mac": "Shift+Two",
+				"ios": "Shift+Two",
+				"android": "Shift+Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/exit-editor"
+		},
+		"level-search-keybinds-header": {
+			"name": "Level Search Keybinds",
+			"type": "title"
+		},
+		"level-search-clear-filters": {
+			"name": "Clear Search Filters",
+			"description": "Clears your search filters.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Delete",
+				"mac": "Shift+Delete",
+				"ios": "Shift+Delete",
+				"android": "Shift+Delete"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-clear-filters"
+		},
+		"level-search-open-filters": {
+			"name": "Open Search Filters",
+			"description": "Open advanced search filters.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Minus",
+				"mac": "Shift+Minus",
+				"ios": "Shift+Minus",
+				"android": "Shift+Minus"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-open-filters"
+		},
+		"level-search-search-mode": {
+			"name": "Toggle Levels/Lists Mode",
+			"description": "Switch between searching for levels and level lists.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+L",
+				"mac": "Shift+L",
+				"ios": "Shift+L",
+				"android": "Shift+L"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-search-mode"
+		},
+		"level-search-rate-filter": {
+			"name": "Star/Moon Rate",
+			"description": "Toggle the star/moon rate filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+Zero",
+				"mac": "Ctrl+Zero",
+				"ios": "Ctrl+Zero",
+				"android": "Alt+Zero"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-rate-filter"
+		},
+		"level-search-quick-downloads": {
+			"name": "Downloads",
+			"description": "Open the \"Downloads\" Quick Search option.",
+			"type": "keybind",
+			"default": {
+				"win": ["Alt+D", "Ctrl+D"],
+				"mac": ["Ctrl+D", "Cmd+D"],
+				"ios": ["Ctrl+D", "Cmd+D"],
+				"android": ["Alt+D", "Ctrl+D"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-quick-downloads"
+		},
+		"level-search-quick-trending": {
+			"name": "Trending",
+			"description": "Open the \"Trending\" Quick Search option.",
+			"type": "keybind",
+			"default": {
+				"win": ["Alt+T", "Ctrl+T"],
+				"mac": ["Ctrl+T", "Cmd+T"],
+				"ios": ["Ctrl+T", "Cmd+T"],
+				"android": ["Alt+T", "Ctrl+T"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-quick-trending"
+		},
+		"level-search-quick-awarded": {
+			"name": "Awarded",
+			"description": "Open the \"Awarded\" Quick Search option.",
+			"type": "keybind",
+			"default": {
+				"win": ["Alt+A", "Ctrl+A"],
+				"mac": ["Ctrl+A", "Cmd+A"],
+				"ios": ["Ctrl+A", "Cmd+A"],
+				"android": ["Alt+A", "Ctrl+A"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-quick-awarded"
+		},
+		"level-search-quick-likes": {
+			"name": "Likes",
+			"description": "Open the \"Likes\" Quick Search option.",
+			"type": "keybind",
+			"default": {
+				"win": ["Alt+L", "Ctrl+L"],
+				"mac": ["Ctrl+L", "Cmd+L"],
+				"ios": ["Ctrl+L", "Cmd+L"],
+				"android": ["Alt+L", "Ctrl+L"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-quick-likes"
+		},
+		"level-search-quick-recent": {
+			"name": "Recent",
+			"description": "Open the \"Recent\" Quick Search option.",
+			"type": "keybind",
+			"default": {
+				"win": ["Alt+R", "Ctrl+R"],
+				"mac": ["Ctrl+R", "Cmd+R"],
+				"ios": ["Ctrl+R", "Cmd+R"],
+				"android": ["Alt+R", "Ctrl+R"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-quick-recent"
+		},
+		"level-search-quick-following": {
+			"name": "Followed",
+			"description": "Open the \"Followed\" Quick Search option.",
+			"type": "keybind",
+			"default": {
+				"win": ["Alt+F", "Ctrl+F"],
+				"mac": ["Ctrl+F", "Cmd+F"],
+				"ios": ["Ctrl+F", "Cmd+F"],
+				"android": ["Alt+F", "Ctrl+F"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-quick-following"
+		},
+		"level-search-quick-sent": {
+			"name": "Sent",
+			"description": "Open the \"Sent\" Quick Search option.",
+			"type": "keybind",
+			"default": {
+				"win": ["Alt+S", "Ctrl+S"],
+				"mac": ["Ctrl+S", "Cmd+S"],
+				"ios": ["Ctrl+S", "Cmd+S"],
+				"android": ["Alt+S", "Ctrl+S"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-quick-sent"
+		},
+		"level-search-quick-magic": {
+			"name": "Magic",
+			"description": "Open the \"Magic\" Quick Search option.",
+			"type": "keybind",
+			"default": {
+				"win": ["Alt+M", "Ctrl+M"],
+				"mac": ["Ctrl+M", "Cmd+M"],
+				"ios": ["Ctrl+M", "Cmd+M"],
+				"android": ["Alt+M", "Ctrl+M"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-quick-magic"
+		},
+		"level-search-quick-friends": {
+			"name": "Friends",
+			"description": "Open the \"Friends\" Quick Search option.",
+			"type": "keybind",
+			"default": {
+				"win": ["Alt+I", "Ctrl+I"],
+				"mac": ["Ctrl+I", "Cmd+I"],
+				"ios": ["Ctrl+I", "Cmd+I"],
+				"android": ["Alt+I", "Ctrl+I"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-quick-friends"
+		},
+		"level-search-length-tiny": {
+			"name": "Tiny",
+			"description": "Toggle the \"Tiny\" level length search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+One",
+				"mac": "Ctrl+One",
+				"ios": "Ctrl+One",
+				"android": "Alt+One"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-length-tiny"
+		},
+		"level-search-length-short": {
+			"name": "Short",
+			"description": "Toggle the \"Short\" level length search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+Two",
+				"mac": "Ctrl+Two",
+				"ios": "Ctrl+Two",
+				"android": "Alt+Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-length-short"
+		},
+		"level-search-length-medium": {
+			"name": "Medium",
+			"description": "Toggle the \"Medium\" level length search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+Three",
+				"mac": "Ctrl+Three",
+				"ios": "Ctrl+Three",
+				"android": "Alt+Three"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-length-medium"
+		},
+		"level-search-length-long": {
+			"name": "Long",
+			"description": "Toggle the \"Long\" level length search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+Four",
+				"mac": "Ctrl+Four",
+				"ios": "Ctrl+Four",
+				"android": "Alt+Four"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-length-long"
+		},
+		"level-search-length-xl": {
+			"name": "XL",
+			"description": "Toggle the \"XL\" level length search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+Five",
+				"mac": "Ctrl+Five",
+				"ios": "Ctrl+Five",
+				"android": "Alt+Five"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-length-xl"
+		},
+		"level-search-length-plat": {
+			"name": "Plat.",
+			"description": "Toggle the \"Plat.\" level length search filter.",
+			"type": "keybind",
+			"default": {
+				"win": ["Alt+Six", "Alt+Nine"],
+				"mac": ["Ctrl+Six", "Ctrl+Nine"],
+				"ios": ["Ctrl+Six", "Ctrl+Nine"],
+				"android": ["Alt+Six", "Alt+Nine"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-length-plat"
+		},
+		"level-search-difficulty-na": {
+			"name": "NA",
+			"description": "Toggle the \"NA\" level difficulty search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+One",
+				"mac": "Cmd+One",
+				"ios": "Cmd+One",
+				"android": "Ctrl+One"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-difficulty-na"
+		},
+		"level-search-difficulty-easy": {
+			"name": "Easy",
+			"description": "Toggle the \"Easy\" level difficulty search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+Two",
+				"mac": "Cmd+Two",
+				"ios": "Cmd+Two",
+				"android": "Ctrl+Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-difficulty-easy"
+		},
+		"level-search-difficulty-normal": {
+			"name": "Normal",
+			"description": "Toggle the \"Normal\" level difficulty search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+Three",
+				"mac": "Cmd+Three",
+				"ios": "Cmd+Three",
+				"android": "Ctrl+Three"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-difficulty-normal"
+		},
+		"level-search-difficulty-hard": {
+			"name": "Hard",
+			"description": "Toggle the \"Hard\" level difficulty search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+Four",
+				"mac": "Cmd+Four",
+				"ios": "Cmd+Four",
+				"android": "Ctrl+Four"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-difficulty-hard"
+		},
+		"level-search-difficulty-harder": {
+			"name": "Harder",
+			"description": "Toggle the \"Harder\" level difficulty search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+Five",
+				"mac": "Cmd+Five",
+				"ios": "Cmd+Five",
+				"android": "Ctrl+Five"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-difficulty-harder"
+		},
+		"level-search-difficulty-insane": {
+			"name": "Insane",
+			"description": "Toggle the \"Insane\" level difficulty search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+Six",
+				"mac": "Cmd+Six",
+				"ios": "Cmd+Six",
+				"android": "Ctrl+Six"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-difficulty-insane"
+		},
+		"level-search-difficulty-demon": {
+			"name": "Demon",
+			"description": "Toggle the \"Demon\" level difficulty search filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+Seven",
+				"mac": "Cmd+Seven",
+				"ios": "Cmd+Seven",
+				"android": "Ctrl+Seven"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-difficulty-demon"
+		},
+		"level-search-difficulty-auto": {
+			"name": "Auto",
+			"description": "Toggle the \"Auto\" level difficulty search filter.",
+			"type": "keybind",
+			"default": {
+				"win": ["Ctrl+Eight", "Ctrl+Grave"],
+				"mac": ["Cmd+Eight", "Cmd+Grave"],
+				"ios": ["Cmd+Eight", "Cmd+Grave"],
+				"android": ["Ctrl+Eight", "Ctrl+Grave"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-difficulty-auto"
+		},
+		"level-search-demon-filter": {
+			"name": "Open Demon Filter",
+			"description": "Open the demon difficulty filter menu.",
+			"type": "keybind",
+			"default": {
+				"win": ["Ctrl+Nine", "Ctrl+Zero"],
+				"mac": ["Cmd+Nine", "Cmd+Zero"],
+				"ios": ["Cmd+Nine", "Cmd+Zero"],
+				"android": ["Ctrl+Nine", "Ctrl+Zero"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-demon-filter"
+		},
+		"level-search-demon-keybinds-header": {
+			"name": "Demon Filter Search Keybinds",
+			"type": "title"
+		},
+		"level-search-all-demons": {
+			"name": "Demon",
+			"description": "Toggle the \"Demon\" filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+One",
+				"mac": "Shift+Ctrl+One",
+				"ios": "Shift+Ctrl+One",
+				"android": "Shift+Ctrl+One"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-all-demons"
+		},
+		"level-search-easy-demon": {
+			"name": "Easy Demon",
+			"description": "Toggle the \"Easy Demon\" filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+Two",
+				"mac": "Shift+Ctrl+Two",
+				"ios": "Shift+Ctrl+Two",
+				"android": "Shift+Ctrl+Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-easy-demon"
+		},
+		"level-search-medium-demon": {
+			"name": "Medium Demon",
+			"description": "Toggle the \"Medium Demon\" filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+Three",
+				"mac": "Shift+Ctrl+Three",
+				"ios": "Shift+Ctrl+Three",
+				"android": "Shift+Ctrl+Three"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-medium-demon"
+		},
+		"level-search-hard-demon": {
+			"name": "Hard Demon",
+			"description": "Toggle the \"Hard Demon\" filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+Four",
+				"mac": "Shift+Ctrl+Four",
+				"ios": "Shift+Ctrl+Four",
+				"android": "Shift+Ctrl+Four"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-hard-demon"
+		},
+		"level-search-insane-demon": {
+			"name": "Insane Demon",
+			"description": "Toggle the \"Insane Demon\" filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+Five",
+				"mac": "Shift+Ctrl+Five",
+				"ios": "Shift+Ctrl+Five",
+				"android": "Shift+Ctrl+Five"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-insane-demon"
+		},
+		"level-search-extreme-demon": {
+			"name": "Extreme Demon",
+			"description": "Toggle the \"Extreme Demon\" filter.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+Six",
+				"mac": "Shift+Ctrl+Six",
+				"ios": "Shift+Ctrl+Six",
+				"android": "Shift+Ctrl+Six"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-search-extreme-demon"
+		},
+		"pause-menu-keybinds-header": {
+			"name": "Pause Menu (PauseLayer) Keybinds",
+			"type": "title"
+		},
+		"restart-level-pause": {
+			"name": "Restart Level From Pause",
+			"description": "Restart the level from the pause menu.",
+			"type": "keybind",
+			"default": {
+				"win": "R",
+				"mac": "R",
+				"ios": "R",
+				"android": "R"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/restart-level-pause"
+		},
+		"full-restart-level-pause": {
+			"name": "Full Restart Level From Pause",
+			"description": "Fully restart the level from the pause menu.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+R",
+				"mac": "Cmd+R",
+				"ios": "Cmd+R",
+				"android": "Ctrl+R"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/full-restart-level-pause"
+		},
+		"editor-level-pause": {
+			"name": "Editor Level From Pause",
+			"description": "Enter the level editor for a level from the pause menu.",
+			"type": "keybind",
+			"default": {
+				"win": ["Ctrl+E", "Shift+E"],
+				"mac": ["Cmd+E", "Shift+E"],
+				"ios": ["Cmd+E", "Shift+E"],
+				"android": ["Ctrl+E", "Shift+E"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/editor-level-pause"
+		},
+		"infolayer-keybinds-header": {
+			"name": "Comments Sections (InfoLayer) Keybinds",
+			"type": "title"
+		},
+		"previous-page": {
+			"name": "Go To Previous Page",
+			"description": "Go to the previous page.",
+			"type": "keybind",
+			"default": {
+				"win": "Left",
+				"mac": "Left",
+				"ios": "Left",
+				"android": "Left"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/previous-page"
+		},
+		"next-page": {
+			"name": "Go To Next Page",
+			"description": "Go to the next page.",
+			"type": "keybind",
+			"default": {
+				"win": "Right",
+				"mac": "Right",
+				"ios": "Right",
+				"android": "Right"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/next-page"
+		},
+		"infolayer-sort-likes": {
+			"name": "Sort by Likes",
+			"description": "Sort comments by like count.",
+			"type": "keybind",
+			"default": {
+				"win": "One",
+				"mac": "One",
+				"ios": "One",
+				"android": "One"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/infolayer-sort-likes"
+		},
+		"infolayer-sort-recent": {
+			"name": "Sort by Recent",
+			"description": "Sort comments by date posted.",
+			"type": "keybind",
+			"default": {
+				"win": "Two",
+				"mac": "Two",
+				"ios": "Two",
+				"android": "Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/infolayer-sort-recent"
+		},
+		"infolayer-extend": {
+			"name": "Show/Hide Level/List Description",
+			"description": "Show/hide the level/list description <cy>(if applicable)</c>.",
+			"type": "keybind",
+			"default": {
+				"win": "Three",
+				"mac": "Three",
+				"ios": "Three",
+				"android": "Three"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/infolayer-extend"
+		},
+		"infolayer-small-mode": {
+			"name": "Compact Comments",
+			"description": "Toggle compact mode when viewing comments.",
+			"type": "keybind",
+			"default": {
+				"win": "Four",
+				"mac": "Four",
+				"ios": "Four",
+				"android": "Four"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/infolayer-small-mode"
+		},
+		"profile-page-keybinds-header": {
+			"name": "Profile Page Keybinds",
+			"type": "title"
+		},
+		"follow-user": {
+			"name": "Follow User",
+			"description": "Follow a user.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+D",
+				"mac": "Cmd+D",
+				"ios": "Cmd+D",
+				"android": "Ctrl+D"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/follow-user"
+		},
+		"message-user": {
+			"name": "Message User",
+			"description": "Message a user, or view your messages.",
+			"type": "keybind",
+			"default": {
+				"win": "Alt+M",
+				"mac": "Ctrl+M",
+				"ios": "Ctrl+M",
+				"android": "Alt+M"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/message-user"
+		},
+		"friend-user": {
+			"name": "Friend User",
+			"description": "Friend a user, or view your friends list.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+F",
+				"mac": "Cmd+F",
+				"ios": "Cmd+F",
+				"android": "Ctrl+F"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/friend-user"
+		},
+		"block-user": {
+			"name": "Block User",
+			"description": "Block a user.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+Ctrl+B",
+				"mac": "Shift+Ctrl+Cmd+B",
+				"ios": "Shift+Ctrl+Cmd+B",
+				"android": "Shift+Alt+Ctrl+B"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/block-user"
+		},
+		"level-info-list-info-keybinds-header": {
+			"name": "Keybinds",
+			"type": "title"
+		},
+		"level-settings": {
+			"name": "Level Options",
+			"description": "View the options menu for a level.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+U",
+				"mac": "Cmd+U",
+				"ios": "Cmd+U",
+				"android": "Ctrl+U"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/level-settings"
+		},
+		"clone": {
+			"name": "Clone Level/List",
+			"description": "Clone a level/list.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+C",
+				"mac": "Cmd+C",
+				"ios": "Cmd+C",
+				"android": "Ctrl+C"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/clone"
+		},
+		"info": {
+			"name": "View Level/List Info",
+			"description": "View the info for a level/list.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+I",
+				"mac": "Cmd+I",
+				"ios": "Cmd+I",
+				"android": "Ctrl+I"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/info"
+		},
+		"level-list-favorite": {
+			"name": "Favorite Level/List",
+			"description": "Favorite a level/list.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+D",
+				"mac": "Cmd+D",
+				"ios": "Cmd+D",
+				"android": "Ctrl+D"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/favorite"
+		},
+		"add-to-list": {
+			"name": "Add Level to List",
+			"description": "Add a level to one of your level lists.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+D",
+				"mac": "Shift+Cmd+D",
+				"ios": "Shift+Cmd+D",
+				"android": "Shift+Ctrl+D"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/add-to-list"
+		},
+		"add-to-folder": {
+			"name": "Add Level to Folder",
+			"description": "Add a level to one of your level folders.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+Ctrl+D",
+				"mac": "Shift+Ctrl+Cmd+D",
+				"ios": "Shift+Ctrl+Cmd+D",
+				"android": "Shift+Alt+Ctrl+D"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/add-to-folder"
+		},
+		"my-levels-keybinds-header": {
+			"name": "\"My Levels\" Navigation Keybinds",
+			"type": "title"
+		},
+		"new-editor-level": {
+			"name": "Create New Level/List",
+			"description": "Create a new level/list.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+N",
+				"mac": "Cmd+N",
+				"ios": "Cmd+N",
+				"android": "Ctrl+N"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/new-editor-level"
+		},
+		"toggle-level-lists": {
+			"name": "Toggle Levels/Lists Mode",
+			"description": "Toggle between viewing local editor levels and local level lists.",
+			"type": "keybind",
+			"default": {
+				"win": ["Shift+Ctrl+L", "Shift+L"],
+				"mac": ["Shift+Cmd+L", "Shift+L"],
+				"ios": ["Shift+Cmd+L", "Shift+L"],
+				"android": ["Shift+Ctrl+L", "Shift+L"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/toggle-level-lists"
+		},
+		"view-uploaded": {
+			"name": "View Uploaded Levels/Lists",
+			"description": "View uploaded levels/level lists.",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+Ctrl+L",
+				"mac": "Shift+Ctrl+Cmd+L",
+				"ios": "Shift+Ctrl+Cmd+L",
+				"android": "Shift+Alt+Ctrl+L"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/view-uploaded"
+		},
+		"levels-lists-header": {
+			"name": "Levels/Lists Shortcuts",
+			"type": "title"
+		},
+		"find": {
+			"name": "Find Level/List",
+			"description": "Find a level/level list from your personal/saved levels/lists.",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+F",
+				"mac": "Cmd+F",
+				"ios": "Cmd+F",
+				"android": "Ctrl+F"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/find"
+		},
+		"leaderboard": {
+			"name": "View Level Leaderboard",
+			"description": "View the leaderboards for a level.",
+			"type": "keybind",
+			"default": {
+				"win": ["Ctrl+F", "Ctrl+L"],
+				"mac": ["Cmd+F", "Cmd+L"],
+				"ios": ["Cmd+F", "Cmd+L"],
+				"android": ["Ctrl+F", "Ctrl+L"]
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/leaderboard"
+		},
+		"sort-by-size": {
+			"name": "Sort Levels by Size",
+			"description": "Sort your custom levels/saved levels by size. <cy>Requires Level Size by hiimjasmine00.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+L",
+				"mac": "Shift+Cmd+L",
+				"ios": "Shift+Cmd+L",
+				"android": "Shift+Ctrl+L"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/sort-by-size"
+		},
+		"partially-universal-keybinds-header": {
+			"name": "Partially Universal Shortcuts",
+			"type": "title"
+		},
+		"refresh-page": {
+			"name": "Refresh Page",
+			"description": "Refresh the layer you're on.\n<cy>Use this keybind with caution; abusing/spamming this keybind can get you rate-limited or banned from RobTop's servers.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Ctrl+R",
+				"mac": "Cmd+R",
+				"ios": "Cmd+R",
+				"android": "Ctrl+R"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/refresh-page"
+		},
+		"first-page": {
+			"name": "Go To First Page",
+			"description": "Go to the first page.<cy>Requires BetterInfo by Cvolton if viewing comments.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Left",
+				"mac": "Shift+Left",
+				"ios": "Shift+Left",
+				"android": "Shift+Left"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/first-page"
+		},
+		"last-page": {
+			"name": "Go To Last Page",
+			"description": "Go to the last page.\n\n<cy>Requires BetterInfo by Cvolton if browsing levels/level lists or viewing comments.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Right",
+				"mac": "Shift+Right",
+				"ios": "Shift+Right",
+				"android": "Shift+Right"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/last-page"
+		},
+		"comments": {
+			"name": "View Comments",
+			"description": "View comments (either for a specific profile, level list, or level).",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+C",
+				"mac": "Shift+C",
+				"ios": "Shift+C",
+				"android": "Shift+C"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/comments"
+		},
+		"leaderboards-keybinds-header": {
+			"name": "Leaderboards Keybinds",
+			"type": "title"
+		},
+		"lb-top-100": {
+			"name": "Top 100",
+			"description": "View the Top 100 Leaderboards.",
+			"type": "keybind",
+			"default": {
+				"win": "One",
+				"mac": "One",
+				"ios": "One",
+				"android": "One"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/lb-top-100"
+		},
+		"lb-friends": {
+			"name": "Friends",
+			"description": "View the Friends Leaderboards.",
+			"type": "keybind",
+			"default": {
+				"win": "Two",
+				"mac": "Two",
+				"ios": "Two",
+				"android": "Two"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/lb-friends"
+		},
+		"lb-global": {
+			"name": "Global",
+			"description": "View the Global Leaderboards.",
+			"type": "keybind",
+			"default": {
+				"win": "Three",
+				"mac": "Three",
+				"ios": "Three",
+				"android": "Three"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/lb-global"
+		},
+		"lb-creators": {
+			"name": "Creators",
+			"description": "View the Creators Leaderboards.",
+			"type": "keybind",
+			"default": {
+				"win": "Four",
+				"mac": "Four",
+				"ios": "Four",
+				"android": "Four"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/lb-creators"
+		},
+		"menulayer-redash-keybinds-header": {
+			"name": "Overcharged Main Menu (MenuLayer) Keybinds",
+			"type": "title"
+		},
+		"menulayer-redash-daily": {
+			"name": "Daily Level",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+D",
+				"mac": "Shift+Cmd+D",
+				"ios": "Shift+Cmd+D",
+				"android": "Shift+Ctrl+D"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-daily"
+		},
+		"menulayer-redash-weekly": {
+			"name": "Weekly Level",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+W",
+				"mac": "Shift+Cmd+W",
+				"ios": "Shift+Cmd+W",
+				"android": "Shift+Ctrl+W"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-weekly"
+		},
+		"menulayer-redash-event": {
+			"name": "Event Level",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Ctrl+E",
+				"mac": "Shift+Cmd+E",
+				"ios": "Shift+Cmd+E",
+				"android": "Shift+Ctrl+E"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-event"
+		},
+		"menulayer-redash-create": {
+			"name": "Create",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+E",
+				"mac": "Shift+Ctrl+E",
+				"ios": "Shift+Ctrl+E",
+				"android": "Shift+Alt+E"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-create"
+		},
+		"menulayer-redash-saved": {
+			"name": "Saved",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+S",
+				"mac": "Shift+Ctrl+S",
+				"ios": "Shift+Ctrl+S",
+				"android": "Shift+Alt+S"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-saved"
+		},
+		"menulayer-redash-paths": {
+			"name": "Paths",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+P",
+				"mac": "Shift+Ctrl+P",
+				"ios": "Shift+Ctrl+P",
+				"android": "Shift+Alt+P"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-paths"
+		},
+		"menulayer-redash-leaderboards": {
+			"name": "Scores (Leaderboards)",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+O",
+				"mac": "Shift+Ctrl+O",
+				"ios": "Shift+Ctrl+O",
+				"android": "Shift+Alt+O"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-leaderboards"
+		},
+		"menulayer-redash-gauntlets": {
+			"name": "Gauntlets",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+G",
+				"mac": "Shift+Ctrl+G",
+				"ios": "Shift+Ctrl+G",
+				"android": "Shift+Alt+G"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-gauntlets"
+		},
+		"menulayer-redash-featured": {
+			"name": "Featured",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+F",
+				"mac": "Shift+Ctrl+F",
+				"ios": "Shift+Ctrl+F",
+				"android": "Shift+Alt+F"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-featured"
+		},
+		"menulayer-redash-lists": {
+			"name": "Lists",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+L",
+				"mac": "Shift+Ctrl+L",
+				"ios": "Shift+Ctrl+L",
+				"android": "Shift+Alt+L"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-lists"
+		},
+		"menulayer-redash-search": {
+			"name": "Search",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+S",
+				"mac": "Shift+Ctrl+S",
+				"ios": "Shift+Ctrl+S",
+				"android": "Shift+Alt+S"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-search"
+		},
+		"menulayer-redash-mappacks": {
+			"name": "Map Packs",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+M",
+				"mac": "Shift+Ctrl+M",
+				"ios": "Shift+Ctrl+M",
+				"android": "Shift+Alt+M"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-mappacks"
+		},
+		"menulayer-redash-quests": {
+			"name": "Quests",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+Q",
+				"mac": "Shift+Ctrl+Q",
+				"ios": "Shift+Ctrl+Q",
+				"android": "Shift+Alt+Q"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-quests"
+		},
+		"menulayer-redash-the-map": {
+			"name": "The Map",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+T",
+				"mac": "Shift+Ctrl+T",
+				"ios": "Shift+Ctrl+T",
+				"android": "Shift+Alt+T"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-the-map"
+		},
+		"menulayer-redash-versus": {
+			"name": "Versus",
+			"description": "<cy>Requires Overcharged Main Menu by Weebify and ninXout.</c>",
+			"type": "keybind",
+			"default": {
+				"win": "Shift+Alt+V",
+				"mac": "Shift+Ctrl+V",
+				"ios": "Shift+Ctrl+V",
+				"android": "Shift+Alt+V"
+			},
+			"migrate-from": "raydeeux.justenoughkeybinds/menulayer-redash-versus"
+		},
 		"advanced-header": {
 			"name": "Advanced Options",
 			"description": "You should probably stay away from these settings unless if you know what you're doing.",
 			"type": "title"
-		},
-		"checkUnfocused": {
-			"name": "Check ProfilePage/InfoLayer Focus",
-			"description": "<cy>This option may reduce your FPS for a few seconds.</c>\n\nRun additional checks to see if the ProfilePage or InfoLayer you're on is active before performing a keybind's actions.",
-			"type": "bool",
-			"default": false
 		},
 		"logging": {
 			"name": "Logging",
@@ -104,8 +1775,7 @@
 		}
 	},
 	"dependencies": {
-		"geode.node-ids": ">=1.20.0",
-		"geode.custom-keybinds": ">=1.10.0"
+		"geode.node-ids": ">=1.22.0"
 	},
 	"issues": {
 		"url": "https://discord.com/channels/911701438269386882/1205523212444639292",

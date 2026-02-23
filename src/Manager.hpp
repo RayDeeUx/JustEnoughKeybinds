@@ -21,7 +21,8 @@ public:
 	bool isGeodeInPauseMenu = false;
 	bool isSeparateDualIcons = false;
 	bool isGeodeTextureLoader = false;
-	bool isMrmanamaOrGarageReimagined = false;
+
+	std::stack<InfoLayer*> infoLayers = {};
 
 	static Manager* getSharedInstance() {
 		if (!instance) {

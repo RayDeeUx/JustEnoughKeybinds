@@ -1,4 +1,3 @@
-#include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <Geode/modify/CharacterColorPage.hpp>
 #include <Geode/modify/GJGarageLayer.hpp>
 #include <Geode/modify/ShardsPage.hpp>
@@ -9,11 +8,14 @@ using namespace geode::prelude;
 using namespace keybinds;
 
 #define DEFINE_KEYBIND\
-	void defineKeybind(const char* id, std::function<void()> callback) {\
-		this->addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {\
-			if (event->isDown()) callback();\
-			return ListenerResult::Propagate;\
-		}, id);\
+	void defineKeybind(std::string id, std::function<void()> callback) {\
+		this->addEventListener(\
+            KeybindSettingPressedEventV3(Mod::get(), id),\
+            [this, callback](Keybind const& keybind, bool down, bool repeat, double timestamp) {\
+				if (!down || repeat) return;\
+				callback();\
+            }\
+        );\
 	}
 
 #define BUTTON typeinfo_cast<CCMenuItemSpriteExtra*>
@@ -33,90 +35,86 @@ using namespace keybinds;
 	RETURN_IF_UNFOCUSED
 
 using namespace geode::prelude;
-using namespace keybinds;
 
 class $modify(MyGJGarageLayer, GJGarageLayer) {
     DEFINE_KEYBIND
 	bool init() {
     	if (!GJGarageLayer::init()) return false;
-    	if (Manager::getSharedInstance()->isMrmanamaOrGarageReimagined && Utils::getBool("gjGarageLayer")) {
-    		FLAlertLayer::create("Heads up!", "Things might crash.\n<c_>Be careful out there.</c>\n--JustEnoughKeybinds", "I understand")->show();
-    	}
-    	this->defineKeybind("garage-cube"_spr, [this]() {
+    	this->defineKeybind("garage-cube", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("cube")
     	});
-    	this->defineKeybind("garage-ship"_spr, [this]() {
+    	this->defineKeybind("garage-ship", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("ship")
     	});
-    	this->defineKeybind("garage-jetpack"_spr, [this]() {
+    	this->defineKeybind("garage-jetpack", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("jetpack")
     	});
-    	this->defineKeybind("garage-ball"_spr, [this]() {
+    	this->defineKeybind("garage-ball", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("ball")
     	});
-    	this->defineKeybind("garage-ufo"_spr, [this]() {
+    	this->defineKeybind("garage-ufo", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("ufo")
     	});
-    	this->defineKeybind("garage-wave"_spr, [this]() {
+    	this->defineKeybind("garage-wave", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("wave")
     	});
-    	this->defineKeybind("garage-robot"_spr, [this]() {
+    	this->defineKeybind("garage-robot", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("robot")
     	});
-    	this->defineKeybind("garage-spider"_spr, [this]() {
+    	this->defineKeybind("garage-spider", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("spider")
 		});
-    	this->defineKeybind("garage-swing"_spr, [this]() {
+    	this->defineKeybind("garage-swing", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("swing")
     	});
-    	this->defineKeybind("garage-trail"_spr, [this]() {
+    	this->defineKeybind("garage-trail", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("trail")
 		});
-    	this->defineKeybind("garage-death-effect"_spr, [this]() {
+    	this->defineKeybind("garage-death-effect", [this]() {
 			EARLY_RETURN
 			SELECT_TAB("death-effect")
     	});
-    	this->defineKeybind("garage-shards-page"_spr, [this]() {
+    	this->defineKeybind("garage-shards-page", [this]() {
 			EARLY_RETURN
 			PRESS("shards-menu > shards-button")
 		});
-    	this->defineKeybind("garage-colors-page"_spr, [this]() {
+    	this->defineKeybind("garage-colors-page", [this]() {
 			EARLY_RETURN
 			PRESS("shards-menu > color-button")
 		});
-    	this->defineKeybind("garage-previous-page"_spr, [this]() {
+    	this->defineKeybind("garage-previous-page", [this]() {
 			EARLY_RETURN
 			PRESS("prev-page-menu > prev-button")
     	});
-    	this->defineKeybind("garage-next-page"_spr, [this]() {
+    	this->defineKeybind("garage-next-page", [this]() {
 			EARLY_RETURN
 			PRESS("next-page-menu > next-button")
     	});
-    	this->defineKeybind("garage-first-page"_spr, [this]() {
+    	this->defineKeybind("garage-first-page", [this]() {
 			EARLY_RETURN
 			FIRST_BUTTON_IN("navdot-menu")
     	});
-    	this->defineKeybind("garage-last-page"_spr, [this]() {
+    	this->defineKeybind("garage-last-page", [this]() {
 			EARLY_RETURN
 			if (getChildByID("hiimjustin000.more_icons/navdot-menu")->isVisible()) LAST_BUTTON_IN("hiimjustin000.more_icons/navdot-menu")
     		else LAST_BUTTON_IN("navdot-menu")
 		});
-    	this->defineKeybind("garage-select-p1"_spr, [this]() {
+    	this->defineKeybind("garage-select-p1", [this]() {
 			EARLY_RETURN
 			if (!Manager::getSharedInstance()->isSeparateDualIcons) return;
 			PRESS("player-buttons-menu > player1-button")
 		});
-    	this->defineKeybind("garage-select-p2"_spr, [this]() {
+    	this->defineKeybind("garage-select-p2", [this]() {
 			EARLY_RETURN
 			if (!Manager::getSharedInstance()->isSeparateDualIcons) return;
 			PRESS("player-buttons-menu > player2-button")
@@ -145,19 +143,19 @@ class $modify(MyCharacterColorPage, CharacterColorPage) {
 	DEFINE_KEYBIND
 	bool init() {
 		if (!CharacterColorPage::init()) return false;
-		this->defineKeybind("garage-col1"_spr, [this]() {
+		this->defineKeybind("garage-col1", [this]() {
 			EARLY_RETURN
 			PRESS_COLOR("col1")
 		});
-		this->defineKeybind("garage-col2"_spr, [this]() {
+		this->defineKeybind("garage-col2", [this]() {
 			EARLY_RETURN
 			PRESS_COLOR("col2")
 		});
-		this->defineKeybind("garage-glow"_spr, [this]() {
+		this->defineKeybind("garage-glow", [this]() {
 			EARLY_RETURN
 			PRESS_COLOR("glow")
 		});
-		this->defineKeybind("garage-outline"_spr, [this]() {
+		this->defineKeybind("garage-outline", [this]() {
 			EARLY_RETURN
 			if (!FINE_OUTLINE) return;
 			PRESS("alphalaneous.fine_outline/color-tabs-menu > alphalaneous.fine_outline/outline-button")
@@ -180,11 +178,11 @@ class $modify(MyShardsPage, ShardsPage) {
 	DEFINE_KEYBIND
 	bool init() {
 		if (!ShardsPage::init()) return false;
-		this->defineKeybind("garage-previous-page"_spr, [this]() {
+		this->defineKeybind("garage-previous-page", [this]() {
 			EARLY_RETURN
 			PRESS_FROM_MAIN_LAYER("arrow-buttons-menu > prev-button")
 		});
-		this->defineKeybind("garage-next-page"_spr, [this]() {
+		this->defineKeybind("garage-next-page", [this]() {
 			EARLY_RETURN
 			PRESS_FROM_MAIN_LAYER("arrow-buttons-menu > next-button")
 		});

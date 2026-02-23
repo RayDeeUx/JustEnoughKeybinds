@@ -1,13 +1,15 @@
-#include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <Geode/modify/EditorUI.hpp>
 #include "Utils.hpp"
 
 #define DEFINE_KEYBIND\
-	void defineKeybind(const char* id, std::function<void()> callback) {\
-		this->addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {\
-			if (event->isDown()) callback();\
-			return ListenerResult::Propagate;\
-		}, id);\
+	void defineKeybind(std::string id, std::function<void()> callback) {\
+		this->addEventListener(\
+            KeybindSettingPressedEventV3(Mod::get(), id),\
+            [this, callback](Keybind const& keybind, bool down, bool repeat, double timestamp) {\
+				if (!down || repeat) return;\
+				callback();\
+            }\
+        );\
 	}
 
 #define CREATE_EDITOR_PAUSE_LAYER\
@@ -24,13 +26,12 @@
 	RETURN_IF_NOT_ACTIVE
 
 using namespace geode::prelude;
-using namespace keybinds;
 
 class $modify(MyEditorUI, EditorUI) {
 	DEFINE_KEYBIND
 	bool init(LevelEditorLayer* p0) {
 		if (!EditorUI::init(p0)) return false;
-		this->defineKeybind("save-editor-level"_spr, [this]() {
+		this->defineKeybind("save-editor-level", [this]() {
 			EARLY_RETURN
 			CREATE_EDITOR_PAUSE_LAYER
 			epl->saveLevel();
@@ -41,19 +42,19 @@ class $modify(MyEditorUI, EditorUI) {
 				"OK"
 			)->show();
 		});
-		this->defineKeybind("save-and-play-editor"_spr, [this]() {
+		this->defineKeybind("save-and-play-editor", [this]() {
 			EARLY_RETURN
 			// simulate all the button clicks! because robtop is such a genius programmer :D
 			CREATE_EDITOR_PAUSE_LAYER
 			CCNode* saveAndPlay = epl->querySelector("resume-menu > save-and-play-button");
 			if (const auto sap = typeinfo_cast<CCMenuItemSpriteExtra*>(saveAndPlay)) return sap->activate();
 		});
-		this->defineKeybind("save-and-exit-editor"_spr, [this]() {
+		this->defineKeybind("save-and-exit-editor", [this]() {
 			EARLY_RETURN
 			CREATE_EDITOR_PAUSE_LAYER
 			return epl->onSaveAndExit(nullptr);
 		});
-		this->defineKeybind("exit-editor"_spr, [this]() {
+		this->defineKeybind("exit-editor", [this]() {
 			EARLY_RETURN
 			CREATE_EDITOR_PAUSE_LAYER
 			if (CCScene::get()->getChildByType<FLAlertLayer>(0)) return;

@@ -1,16 +1,17 @@
-#include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <Geode/modify/MoreOptionsLayer.hpp>
 #include "Utils.hpp"
 
 using namespace geode::prelude;
-using namespace keybinds;
 
 #define DEFINE_KEYBIND\
-	void defineKeybind(const char* id, std::function<void()> callback) {\
-		this->addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {\
-			if (event->isDown()) callback();\
-			return ListenerResult::Propagate;\
-		}, id);\
+	void defineKeybind(std::string id, std::function<void()> callback) {\
+		this->addEventListener(\
+            KeybindSettingPressedEventV3(Mod::get(), id),\
+            [this, callback](Keybind const& keybind, bool down, bool repeat, double timestamp) {\
+				if (!down || repeat) return;\
+				callback();\
+            }\
+        );\
 	}
 
 #define PRESS(query) Utils::activateButtonSafe(query, this);
@@ -20,11 +21,11 @@ class $modify(MyMoreOptionsLayer, MoreOptionsLayer) {
 	DEFINE_KEYBIND
 	bool init() {
 		if (!MoreOptionsLayer::init()) return false;
-		this->defineKeybind("previous-options-page"_spr, [this]() {
+		this->defineKeybind("previous-options-page", [this]() {
 			RETURN_IF_DISABLED("moreOptionsLayer")
 			PRESS("main-layer > togglers-menu > left-arrow-button")
 		});
-		this->defineKeybind("next-options-page"_spr, [this]() {
+		this->defineKeybind("next-options-page", [this]() {
 			RETURN_IF_DISABLED("moreOptionsLayer")
 			PRESS("main-layer > togglers-menu > right-arrow-button")
 		});

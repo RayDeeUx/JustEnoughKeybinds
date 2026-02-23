@@ -1,16 +1,18 @@
-#include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <Geode/modify/CreatorLayer.hpp>
 #include "Utils.hpp"
 
 using namespace geode::prelude;
-using namespace keybinds;
 
+// highkey this macro better work or else
 #define DEFINE_KEYBIND\
-	void defineKeybind(const char* id, std::function<void()> callback) {\
-		this->addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {\
-			if (event->isDown()) callback();\
-			return ListenerResult::Propagate;\
-		}, id);\
+	void defineKeybind(std::string id, std::function<void()> callback) {\
+		this->addEventListener(\
+            KeybindSettingPressedEventV3(Mod::get(), id),\
+            [this, callback](Keybind const& keybind, bool down, bool repeat, double timestamp) {\
+				if (!down || repeat) return;\
+				callback();\
+            }\
+        );\
 	}
 
 #define PRESS(query) Utils::activateButtonSafe(query, this);
@@ -25,63 +27,63 @@ class $modify(MyCreatorLayer, CreatorLayer) {
 	DEFINE_KEYBIND
 	bool init() {
 		if (!CreatorLayer::init()) return false;
-		this->defineKeybind("creatorlayer-create"_spr, [this]() {
+		this->defineKeybind("creatorlayer-create", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("create")
 		});
-		this->defineKeybind("creatorlayer-saved"_spr, [this]() {
+		this->defineKeybind("creatorlayer-saved", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("saved")
 		});
-		this->defineKeybind("creatorlayer-scores"_spr, [this]() {
+		this->defineKeybind("creatorlayer-scores", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("scores")
 		});
-		this->defineKeybind("creatorlayer-quests"_spr, [this]() {
+		this->defineKeybind("creatorlayer-quests", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("quests")
 		});
-		this->defineKeybind("creatorlayer-versus"_spr, [this]() {
+		this->defineKeybind("creatorlayer-versus", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("versus")
 		});
-		this->defineKeybind("creatorlayer-map"_spr, [this]() {
+		this->defineKeybind("creatorlayer-map", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("map")
 		});
-		this->defineKeybind("creatorlayer-daily"_spr, [this]() {
+		this->defineKeybind("creatorlayer-daily", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("daily")
 		});
-		this->defineKeybind("creatorlayer-weekly"_spr, [this]() {
+		this->defineKeybind("creatorlayer-weekly", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("weekly")
 		});
-		this->defineKeybind("creatorlayer-event"_spr, [this]() {
+		this->defineKeybind("creatorlayer-event", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("event")
 		});
-		this->defineKeybind("creatorlayer-gauntlets"_spr, [this]() {
+		this->defineKeybind("creatorlayer-gauntlets", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("gauntlets")
 		});
-		this->defineKeybind("creatorlayer-featured"_spr, [this]() {
+		this->defineKeybind("creatorlayer-featured", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("featured")
 		});
-		this->defineKeybind("creatorlayer-lists"_spr, [this]() {
+		this->defineKeybind("creatorlayer-lists", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("lists")
 		});
-		this->defineKeybind("creatorlayer-paths"_spr, [this]() {
+		this->defineKeybind("creatorlayer-paths", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("paths")
 		});
-		this->defineKeybind("creatorlayer-map-packs"_spr, [this]() {
+		this->defineKeybind("creatorlayer-map-packs", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("map-packs")
 		});
-		this->defineKeybind("creatorlayer-search"_spr, [this]() {
+		this->defineKeybind("creatorlayer-search", [this]() {
 			EARLY_RETURN
 			PRESS_CREATOR("search")
 		});

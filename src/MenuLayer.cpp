@@ -1,10 +1,8 @@
-#include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 #include "Manager.hpp"
 #include "Utils.hpp"
 
 using namespace geode::prelude;
-using namespace keybinds;
 
 class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 	static void onModify(auto& self) {
@@ -26,10 +24,6 @@ class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 			if (!manager->isGeodeTextureLoader && modID == "geode.texture-loader") manager->isGeodeTextureLoader = true;
 			if (!manager->isSeparateDualIcons && modID == "weebify.separate_dual_icons") manager->isSeparateDualIcons = true;
 			if (!manager->isGeodeInPauseMenu && modID == "hiimjustin000.geode_in_pause_menu") manager->isGeodeInPauseMenu = true;
-			// split for readability, shut up CLion
-			// ReSharper disable CppTooWideScopeInitStatement
-			const bool cringeGarageMod = utils::string::endsWith(modID, ".garage-reimagined") || utils::string::startsWith(modID, "mrmanama.garage");
-			if (!manager->isMrmanamaOrGarageReimagined && cringeGarageMod) manager->isMrmanamaOrGarageReimagined = true;
 		}
 		log::info("manager->isRedash: {}", manager->isRedash);
 		log::info("manager->isGlobed: {}", manager->isGlobed);
@@ -44,11 +38,14 @@ class $modify(IHateGarageReimaginedMenuLayer, MenuLayer) {
 };
 
 #define DEFINE_KEYBIND\
-	void defineKeybind(const char* id, std::function<void()> callback) {\
-		this->addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {\
-			if (event->isDown()) callback();\
-			return ListenerResult::Propagate;\
-		}, id);\
+	void defineKeybind(std::string id, std::function<void()> callback) {\
+		this->addEventListener(\
+            KeybindSettingPressedEventV3(Mod::get(), id),\
+            [this, callback](Keybind const& keybind, bool down, bool repeat, double timestamp) {\
+				if (!down || repeat) return;\
+				callback();\
+            }\
+        );\
 	}
 
 #define PRESS(query) Utils::activateButtonSafe(query, this);
@@ -83,23 +80,23 @@ class $modify(MyMenuLayer, MenuLayer) {
 	bool init() {
 		if (!MenuLayer::init()) return false;
 		Manager* manager = Manager::getSharedInstance();
-		this->defineKeybind("menulayer-globed"_spr, [this]() {
+		this->defineKeybind("menulayer-globed", [this]() {
 			EARLY_RETURN
 			PRESS("bottom-menu > dankmeme.globed2/main-menu-button")
 		});
-		this->defineKeybind("menulayer-garage"_spr, [this]() {
+		this->defineKeybind("menulayer-garage", [this]() {
 			EARLY_RETURN
 			MenuLayer::onGarage(nullptr);
 		});
-		this->defineKeybind("menulayer-online-menus"_spr, [this]() {
+		this->defineKeybind("menulayer-online-menus", [this]() {
 			EARLY_RETURN
 			MenuLayer::onCreator(nullptr);
 		});
-		this->defineKeybind("menulayer-my-profile"_spr, [this]() {
+		this->defineKeybind("menulayer-my-profile", [this]() {
 			EARLY_RETURN
 			MenuLayer::onMyProfile(nullptr);
 		});
-		this->defineKeybind("menulayer-daily-chests"_spr, [this]() {
+		this->defineKeybind("menulayer-daily-chests", [this]() {
 			EARLY_RETURN
 			MenuLayer::onDaily(nullptr);
 		});
@@ -111,63 +108,63 @@ class $modify(MyMenuLayer, MenuLayer) {
 		log::info("is redash installed?");
 		if (!manager->isRedash) return true;
 		log::info("redash is installed! adding redash keybinds");
-		this->defineKeybind("menulayer-redash-daily"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-daily", [this]() {
 			EARLY_RETURN
 			PUSH_BUTTON_IN_TYPE("daily")
 		});
-		this->defineKeybind("menulayer-redash-weekly"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-weekly", [this]() {
 			EARLY_RETURN
 			PUSH_BUTTON_IN_TYPE("weekly")
 		});
-		this->defineKeybind("menulayer-redash-event"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-event", [this]() {
 			EARLY_RETURN
 			PUSH_BUTTON_IN_TYPE("event")
 		});
-		this->defineKeybind("menulayer-redash-create"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-create", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("create")
 		});
-		this->defineKeybind("menulayer-redash-saved"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-saved", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("saved")
 		});
-		this->defineKeybind("menulayer-redash-paths"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-paths", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("paths")
 		});
-		this->defineKeybind("menulayer-redash-leaderboards"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-leaderboards", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("leaderboards")
 		});
-		this->defineKeybind("menulayer-redash-gauntlets"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-gauntlets", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("gauntlets")
 		});
-		this->defineKeybind("menulayer-redash-featured"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-featured", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("featured")
 		});
-		this->defineKeybind("menulayer-redash-lists"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-lists", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("lists")
 		});
-		this->defineKeybind("menulayer-redash-search"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-search", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("search")
 		});
-		this->defineKeybind("menulayer-redash-mappacks"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-mappacks", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("mappacks")
 		});
-		this->defineKeybind("menulayer-redash-quests"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-quests", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("quests")
 		});
-		this->defineKeybind("menulayer-redash-the-map"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-the-map", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("the-map")
 		});
-		this->defineKeybind("menulayer-redash-versus"_spr, [this]() {
+		this->defineKeybind("menulayer-redash-versus", [this]() {
 			EARLY_RETURN
 			REDASH_PRESS("versus")
 		});

@@ -1,4 +1,3 @@
-#include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <Geode/modify/LeaderboardsLayer.hpp>
 #include <Geode/modify/LevelBrowserLayer.hpp>
 #include <Geode/modify/LevelListLayer.hpp>
@@ -9,14 +8,16 @@
 #include "Utils.hpp"
 
 using namespace geode::prelude;
-using namespace keybinds;
 
 #define DEFINE_KEYBIND\
-	void defineKeybind(const char* id, std::function<void()> callback) {\
-		this->addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {\
-			if (event->isDown()) callback();\
-			return ListenerResult::Propagate;\
-		}, id);\
+	void defineKeybind(std::string id, std::function<void()> callback) {\
+		this->addEventListener(\
+            KeybindSettingPressedEventV3(Mod::get(), id),\
+            [this, callback](Keybind const& keybind, bool down, bool repeat, double timestamp) {\
+				if (!down || repeat) return;\
+				callback();\
+            }\
+        );\
 	}
 
 #define BETTERINFO_RETURN if (!Manager::getSharedInstance()->isBetterInfo) INSTALL_BETTERINFO_YOU_BLOCKHEAD
@@ -63,52 +64,52 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 	};
 	DEFINE_KEYBIND
 	bool init(GJSearchObject* searchObject) {
-		if (!LevelBrowserLayer::init(searchObject)) return false;
+		if (!LevelBrowserLayer::init(searchObject) || this->m_isOverlay) return false;
 
 		m_fields->isMine = this->getChildByID("new-level-menu");
 		m_fields->isSaved = this->getChildByID("saved-menu");
 		m_fields->isSearch = this->getChildByID("refresh-menu");
 
-		this->defineKeybind("find"_spr, [this]() {
+		this->defineKeybind("find", [this]() {
 			SEARCHING_LEVELS_RETURN
 			LEVEL_BROWSER_LAYER_RETURN
 			PRESS("search-menu > search-button")
 		});
-		this->defineKeybind("refresh-page"_spr, [this]() {
+		this->defineKeybind("refresh-page", [this]() {
 			MY_LEVELS_RETURN
 			SAVED_LEVELS_RETURN
 			LEVEL_BROWSER_LAYER_RETURN
 			LevelBrowserLayer::onRefresh(nullptr);
 		});
-		this->defineKeybind("toggle-level-lists"_spr, [this]() {
+		this->defineKeybind("toggle-level-lists", [this]() {
 			SEARCHING_LEVELS_RETURN
 			LEVEL_BROWSER_LAYER_RETURN
 			IF_SAVED PRESS("saved-menu > switch-mode-button")
 			IF_MY PRESS("new-level-menu > switch-mode-button")
 		});
-		this->defineKeybind("first-page"_spr, [this]() {
+		this->defineKeybind("first-page", [this]() {
 			LEVEL_BROWSER_LAYER_RETURN
 			SetIDPopup* dummySetID = SetIDPopup::create(1, 1, 999999, "Go to Page", "Go", true, 1, 60, false, false);
 			LevelBrowserLayer::setIDPopupClosed(dummySetID, 1);
 		});
-		this->defineKeybind("last-page"_spr, [this]() {
+		this->defineKeybind("last-page", [this]() {
 			LEVEL_BROWSER_LAYER_RETURN
 			IF_SEARCHING PRESS("page-menu > cvolton.betterinfo/last-button")
 			PRESS("page-menu > last-page-button")
 		});
-		this->defineKeybind("new-editor-level"_spr, [this]() {
+		this->defineKeybind("new-editor-level", [this]() {
 			SEARCHING_LEVELS_RETURN
 			SAVED_LEVELS_RETURN
 			LEVEL_BROWSER_LAYER_RETURN
 			PRESS("new-level-menu > new-level-button")
 		});
-		this->defineKeybind("view-uploaded"_spr, [this]() {
+		this->defineKeybind("view-uploaded", [this]() {
 			SEARCHING_LEVELS_RETURN
 			SAVED_LEVELS_RETURN
 			LEVEL_BROWSER_LAYER_RETURN
 			PRESS("my-levels-menu > my-levels-button")
 		});
-		this->defineKeybind("sort-by-size"_spr, [this]() {
+		this->defineKeybind("sort-by-size", [this]() {
 			SEARCHING_LEVELS_RETURN
 			LEVEL_BROWSER_LAYER_RETURN
 			if (!Manager::getSharedInstance()->isLevelSize) return;
@@ -129,39 +130,39 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
 	DEFINE_KEYBIND
 	bool init(GJGameLevel* p0, bool p1) {
 		if (!LevelInfoLayer::init(p0, p1)) return false;
-		this->defineKeybind("refresh-page"_spr, [this]() {
+		this->defineKeybind("refresh-page", [this]() {
 			LEVEL_INFO_LAYER_RETURN
 			LevelInfoLayer::onUpdate(nullptr);
 		});
-		this->defineKeybind("comments"_spr, [this]() {
+		this->defineKeybind("comments", [this]() {
 			LEVEL_INFO_LAYER_RETURN
 			PRESS("right-side-menu > info-button")
 		});
-		this->defineKeybind("leaderboard"_spr, [this]() {
+		this->defineKeybind("leaderboard", [this]() {
 			LEVEL_INFO_LAYER_RETURN
 			PRESS("right-side-menu > leaderboards-button")
 		});
-		this->defineKeybind("favorite"_spr, [this]() {
+		this->defineKeybind("favorite", [this]() {
 			LEVEL_INFO_LAYER_RETURN
 			PRESS("other-menu > favorite-button")
 		});
-		this->defineKeybind("add-to-list"_spr, [this]() {
+		this->defineKeybind("add-to-list", [this]() {
 			LEVEL_INFO_LAYER_RETURN
 			LevelInfoLayer::onAddToList(nullptr);
 		});
-		this->defineKeybind("add-to-folder"_spr, [this]() {
+		this->defineKeybind("add-to-folder", [this]() {
 			LEVEL_INFO_LAYER_RETURN
 			LevelInfoLayer::onSetFolder(nullptr);
 		});
-		this->defineKeybind("clone"_spr, [this]() {
+		this->defineKeybind("clone", [this]() {
 			LEVEL_INFO_LAYER_RETURN
 			PRESS("left-side-menu > copy-button")
 		});
-		this->defineKeybind("info"_spr, [this]() {
+		this->defineKeybind("info", [this]() {
 			LEVEL_INFO_LAYER_RETURN
 			LevelInfoLayer::onLevelInfo(nullptr);
 		});
-		this->defineKeybind("settings"_spr, [this]() {
+		this->defineKeybind("level-settings", [this]() {
 			LEVEL_INFO_LAYER_RETURN
 			PRESS("settings-menu > settings-button")
 		});
@@ -173,23 +174,23 @@ class $modify(MyLevelListLayer, LevelListLayer) {
 	DEFINE_KEYBIND
 	bool init(GJLevelList* list) {
 		if (!LevelListLayer::init(list)) return false;
-		this->defineKeybind("refresh-page"_spr, [this]() {
+		this->defineKeybind("refresh-page", [this]() {
 			LEVEL_LIST_LAYER_RETURN
 			PRESS("right-side-menu > refresh-button")
 		});
-		this->defineKeybind("comments"_spr, [this]() {
+		this->defineKeybind("comments", [this]() {
 			LEVEL_LIST_LAYER_RETURN
 			PRESS("right-side-menu > info-button")
 		});
-		this->defineKeybind("favorite"_spr, [this]() {
+		this->defineKeybind("favorite", [this]() {
 			LEVEL_LIST_LAYER_RETURN
 			PRESS("right-side-menu > favorite-button")
 		});
-		this->defineKeybind("clone"_spr, [this]() {
+		this->defineKeybind("clone", [this]() {
 			LEVEL_LIST_LAYER_RETURN
 			PRESS("right-side-menu > copy-button")
 		});
-		this->defineKeybind("info"_spr, [this]() {
+		this->defineKeybind("info", [this]() {
 			LEVEL_LIST_LAYER_RETURN
 			PRESS("button-menu > small-info-button")
 		});
@@ -206,24 +207,24 @@ class $modify(MyLeaderboardsLayer, LeaderboardsLayer) {
 	}
 	bool init(LeaderboardState leaderboardState) {
 		if (!LeaderboardsLayer::init(leaderboardState)) return false;
-		this->defineKeybind("refresh-page"_spr, [this]() {
+		this->defineKeybind("refresh-page", [this]() {
 			LEADERBOARDS_LAYER_RETURN
 			BETTERINFO_RETURN
 			PRESS("bottom-right-menu > cvolton.betterinfo/refresh-button")
 		});
-		this->defineKeybind("lb-top-100"_spr, [this]() {
+		this->defineKeybind("lb-top-100", [this]() {
 			LEADERBOARDS_LAYER_RETURN
 			FIRST_BUTTON_IN("top-100-menu")
 		});
-		this->defineKeybind("lb-friends"_spr, [this]() {
+		this->defineKeybind("lb-friends", [this]() {
 			LEADERBOARDS_LAYER_RETURN
 			FIRST_BUTTON_IN("friends-menu")
 		});
-		this->defineKeybind("lb-global"_spr, [this]() {
+		this->defineKeybind("lb-global", [this]() {
 			LEADERBOARDS_LAYER_RETURN
 			FIRST_BUTTON_IN("global-menu")
 		});
-		this->defineKeybind("lb-creators"_spr, [this]() {
+		this->defineKeybind("lb-creators", [this]() {
 			LEADERBOARDS_LAYER_RETURN
 			FIRST_BUTTON_IN("creators-menu")
 		});
@@ -241,35 +242,35 @@ class $modify(MyProfilePage, ProfilePage) {
 	DEFINE_KEYBIND
 	bool init(int profile, bool ownProfile) {
 		if (!ProfilePage::init(profile, ownProfile)) return false;
-		this->defineKeybind("refresh-page"_spr, [this]() {
+		this->defineKeybind("refresh-page", [this]() {
 			PROFILEPAGE_RETURN
 			PRESS_FROM_MAIN_LAYER("main-menu > refresh-button")
 		});
-		this->defineKeybind("previous-page"_spr, [this]() {
+		this->defineKeybind("previous-page", [this]() {
 			PROFILEPAGE_RETURN
 			PRESS_FROM_MAIN_LAYER("main-menu > prev-page-button")
 		});
-		this->defineKeybind("next-page"_spr, [this]() {
+		this->defineKeybind("next-page", [this]() {
 			PROFILEPAGE_RETURN
 			PRESS_FROM_MAIN_LAYER("main-menu > next-page-button")
 		});
-		this->defineKeybind("comments"_spr, [this]() {
+		this->defineKeybind("comments", [this]() {
 			PROFILEPAGE_RETURN
 			PRESS_FROM_MAIN_LAYER("main-menu > comment-history-button")
 		});
-		this->defineKeybind("follow-user"_spr, [this]() {
+		this->defineKeybind("follow-user", [this]() {
 			PROFILEPAGE_RETURN
 			PRESS_FROM_MAIN_LAYER("main-menu > follow-button")
 		});
-		this->defineKeybind("message-user"_spr, [this]() {
+		this->defineKeybind("message-user", [this]() {
 			PROFILEPAGE_RETURN
 			PRESS_FROM_MAIN_LAYER("bottom-menu > message-button")
 		});
-		this->defineKeybind("friend-user"_spr, [this]() {
+		this->defineKeybind("friend-user", [this]() {
 			PROFILEPAGE_RETURN
 			PRESS_FROM_MAIN_LAYER("bottom-menu > friend-button")
 		});
-		this->defineKeybind("block-user"_spr, [this]() {
+		this->defineKeybind("block-user", [this]() {
 			PROFILEPAGE_RETURN
 			PRESS_FROM_MAIN_LAYER("bottom-menu > block-button")
 		});
@@ -282,49 +283,55 @@ class $modify(MyProfilePage, ProfilePage) {
 #define INFOLAYER_UNFOCUSED_RETURN if (!CCScene::get()->getChildByID("ProfilePage") && CCScene::get()->getChildByType<FLAlertLayer>(1)) return;
 #define INFOLAYER_RETURN\
 	RETURN_IF_DISABLED("infoLayer")\
-	if (Utils::getBool("checkUnfocused")) { INFOLAYER_UNFOCUSED_RETURN } else if (CCScene::get()->getChildByID("FLAlertLayer") || GJBaseGameLayer::get()) { return; }
+	if (Manager::getSharedInstance()->infoLayers.top() != this) return;
 
 class $modify(MyInfoLayer, InfoLayer) {
+	struct Fields {
+		~Fields() {
+			if (!Manager::getSharedInstance()->infoLayers.empty()) { Manager::getSharedInstance()->infoLayers.pop(); }
+		}
+	};
 	DEFINE_KEYBIND
 	bool init(GJGameLevel* level, GJUserScore* profile, GJLevelList* list) {
 		if (!InfoLayer::init(level, profile, list)) return false;
-		this->defineKeybind("refresh-page"_spr, [this]() {
+		Manager::getSharedInstance()->infoLayers.push(this);
+		this->defineKeybind("refresh-page", [this]() {
 			INFOLAYER_RETURN
 			PRESS_FROM_MAIN_LAYER("refresh-menu > refresh-button")
 		});
-		this->defineKeybind("previous-page"_spr, [this]() {
+		this->defineKeybind("previous-page", [this]() {
 			INFOLAYER_RETURN
 			PRESS_FROM_MAIN_LAYER("switch-page-menu > prev-page-button")
 		});
-		this->defineKeybind("next-page"_spr, [this]() {
+		this->defineKeybind("next-page", [this]() {
 			INFOLAYER_RETURN
 			PRESS_FROM_MAIN_LAYER("switch-page-menu > next-page-button")
 		});
-		this->defineKeybind("infolayer-sort-likes"_spr, [this]() {
+		this->defineKeybind("infolayer-sort-likes", [this]() {
 			INFOLAYER_RETURN
 			PRESS_FROM_MAIN_LAYER("left-side-menu > sort-likes-button")
 		});
-		this->defineKeybind("infolayer-sort-recent"_spr, [this]() {
+		this->defineKeybind("infolayer-sort-recent", [this]() {
 			INFOLAYER_RETURN
 			PRESS_FROM_MAIN_LAYER("left-side-menu > sort-recent-button")
 		});
-		this->defineKeybind("infolayer-extend"_spr, [this]() {
+		this->defineKeybind("infolayer-extend", [this]() {
 			if (m_mode == CommentKeyType::User) return;
 			INFOLAYER_RETURN
 			PRESS_FROM_MAIN_LAYER("left-side-menu > extend-button")
 		});
-		this->defineKeybind("infolayer-small-mode"_spr, [this]() {
+		this->defineKeybind("infolayer-small-mode", [this]() {
 			INFOLAYER_RETURN
 			PRESS_FROM_MAIN_LAYER("left-side-menu > small-mode-button")
 		});
-		this->defineKeybind("first-page"_spr, [this]() {
+		this->defineKeybind("first-page", [this]() {
 			INFOLAYER_RETURN
 			BETTERINFO_RETURN
 			PRESS_FROM_MAIN_LAYER("refresh-menu > cvolton.betterinfo/comment-page-btn")
 			PRESS_CVOLTON("cvolton.betterinfo/reset-button")
 			PRESS_CVOLTON("cvolton.betterinfo/go-button")
 		});
-		this->defineKeybind("last-page"_spr, [this]() {
+		this->defineKeybind("last-page", [this]() {
 			INFOLAYER_RETURN
 			BETTERINFO_RETURN
 			PRESS_FROM_MAIN_LAYER("refresh-menu > cvolton.betterinfo/comment-page-btn")
