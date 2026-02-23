@@ -199,14 +199,9 @@ class $modify(MyLevelListLayer, LevelListLayer) {
 };
 
 class $modify(MyLeaderboardsLayer, LeaderboardsLayer) {
-	void defineKeybind(const char* id, std::function<void()> callback) {
-		this->addEventListener<InvokeBindFilter>([=](InvokeBindEvent* event) {
-			if (event->isDown()) callback();
-			return ListenerResult::Propagate;
-		}, id);
-	}
-	bool init(LeaderboardState leaderboardState) {
-		if (!LeaderboardsLayer::init(leaderboardState)) return false;
+	DEFINE_KEYBIND
+	bool init(LeaderboardStat leaderboardStat) {
+		if (!LeaderboardsLayer::init(leaderboardStat)) return false;
 		this->defineKeybind("refresh-page", [this]() {
 			LEADERBOARDS_LAYER_RETURN
 			BETTERINFO_RETURN
