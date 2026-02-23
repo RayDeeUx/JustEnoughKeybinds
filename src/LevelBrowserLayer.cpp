@@ -44,7 +44,7 @@ using namespace geode::prelude;
 
 #define LEVEL_LIST_LAYER_RETURN\
 	EARLY_RETURN("levelListLayer")\
-	if (!CCScene::get()->getChildByType<LevelListLayer>(0) || CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelInfoLayer>(0) || !this->list || this->list->m_isEditable) return;\
+	if (!CCScene::get()->getChildByType<LevelListLayer>(0) || CCScene::get()->getChildByType<LevelBrowserLayer>(0) || CCScene::get()->getChildByType<LevelInfoLayer>(0) || !this->m_levelList || this->m_levelList->m_isEditable) return;\
 
 
 using namespace geode::prelude;
